@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3m518cnmhglb"]
+
+[ext_resource type="Script" path="res://src/Item.cs" id="1_yuujv"]
+
+[node name="Item" type="Node2D"]
+script = ExtResource("1_yuujv")
+metadata/ItemType = 0
+metadata/Rarity = 0
+metadata/Cost = 0.0
+metadata/Name = "GENERIC"
+metadata/Texture = null
