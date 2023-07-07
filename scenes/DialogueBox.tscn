@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://cs0hw43iaprtg"]
+
+[ext_resource type="Texture2D" uid="uid://bfsi2f6mqm341" path="res://assets/ShopArt/Dialogue-box.png" id="1_k35us"]
+
+[node name="DialogueBox" type="Control"]
+custom_minimum_size = Vector2(854, 230)
+layout_mode = 3
+anchors_preset = 0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_k35us")
+
+[node name="Label" type="Label" parent="TextureRect"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0

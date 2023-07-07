@@ -1,14 +1,28 @@
-[gd_scene load_steps=4 format=3 uid="uid://da21yxsvrkju3"]
+[gd_scene load_steps=8 format=3 uid="uid://da21yxsvrkju3"]
 
 [ext_resource type="Script" path="res://src/ShopKeepWorld.cs" id="1_u08rc"]
 [ext_resource type="Script" path="res://src/UISwitcher.cs" id="1_wubux"]
 [ext_resource type="Script" path="res://src/Inventory.cs" id="2_jvvst"]
+[ext_resource type="PackedScene" uid="uid://cs0hw43iaprtg" path="res://scenes/DialogueBox.tscn" id="3_ouxon"]
+[ext_resource type="Texture2D" uid="uid://cju1l6srjua2" path="res://assets/ShopArt/Inventory-button.png" id="4_3rtjg"]
+[ext_resource type="Texture2D" uid="uid://cgqrwmtiykjon" path="res://assets/ShopArt/Shop-lvl-1.png" id="4_4pylg"]
+[ext_resource type="Script" path="res://InvTextureButton.cs" id="4_jab51"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_u08rc")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("4_4pylg")
+expand_mode = 1
 
 [node name="UISwitcher" type="Control" parent="CanvasLayer"]
 layout_mode = 3
@@ -22,23 +36,23 @@ script = ExtResource("1_wubux")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/UISwitcher"]
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
+anchors_preset = 3
+anchor_left = 1.0
 anchor_top = 1.0
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -41.0
-offset_top = -90.0
-offset_right = 42.0
-grow_horizontal = 2
+offset_left = -513.0
+offset_top = -136.0
+offset_right = -266.0
+offset_bottom = -27.0
+grow_horizontal = 0
 grow_vertical = 0
 theme_override_constants/separation = 50
 
-[node name="InventoryButton" type="Button" parent="CanvasLayer/UISwitcher/HBoxContainer"]
+[node name="InventoryButton" type="TextureButton" parent="CanvasLayer/UISwitcher/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-text = "Inventory"
+texture_normal = ExtResource("4_3rtjg")
+script = ExtResource("4_jab51")
 
 [node name="Inventory" type="Control" parent="CanvasLayer"]
 layout_mode = 3
@@ -49,6 +63,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("2_jvvst")
+numItems = 20
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Inventory"]
 layout_mode = 1
@@ -58,13 +73,20 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 60
+theme_override_constants/margin_left = 80
+theme_override_constants/margin_top = 120
+theme_override_constants/margin_right = 80
+theme_override_constants/margin_bottom = 100
 
 [node name="GridContainer" type="GridContainer" parent="CanvasLayer/Inventory/MarginContainer"]
 layout_mode = 2
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 40
+columns = 9
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Inventory/MarginContainer"]
+layout_mode = 2
+color = Color(0.231373, 0.231373, 0.231373, 0.321569)
 
 [node name="CustomerView" type="Control" parent="CanvasLayer"]
 layout_mode = 3
@@ -74,3 +96,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="DialogueBox" parent="CanvasLayer" instance=ExtResource("3_ouxon")]
+offset_left = 544.0
+offset_top = 767.0
+offset_right = 544.0
+offset_bottom = 767.0

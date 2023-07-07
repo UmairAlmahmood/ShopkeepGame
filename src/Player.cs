@@ -1,11 +1,14 @@
 using Godot;
 using System;
 
-public partial class Player : Node2D {
+public partial class Player : Control {
 	Texture2D portraitImage;
 	String name;
 	Personality personality;
 	PlayerClass playerClass;
+	Label classLabel;
+	Label nameLabel;
+	TextureRect portraitRect;
 	public override void _Ready() {
 		portraitImage = (Texture2D)GetMeta("Portrait");
 		name = (String)GetMeta("Name");

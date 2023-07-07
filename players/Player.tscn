@@ -2,9 +2,29 @@
 
 [ext_resource type="Script" path="res://src/Player.cs" id="1_ivlfs"]
 
-[node name="Player" type="Node2D"]
+[node name="Player" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 script = ExtResource("1_ivlfs")
-metadata/Portrait = null
 metadata/Name = ""
 metadata/Personality = 0
 metadata/Class = 0
+metadata/Portrait = null
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Class" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Portrait" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
