@@ -2,7 +2,7 @@ using Godot;
 using System;
 
 public partial class UISwitcher : Control {
-    Button inventoryButton;
+    InvTextureButton inventoryButton;
     Inventory inventory;
     Control customerView;
     bool isInventoryOpen = false;
@@ -10,7 +10,7 @@ public partial class UISwitcher : Control {
         inventory = GetNode<Inventory>("../Inventory");
         inventory.Hide();
         customerView = GetNode<Control>("../CustomerView");
-        inventoryButton = GetNode<Button>("HBoxContainer/InventoryButton");
+        inventoryButton = GetNode<InvTextureButton>("HBoxContainer/InventoryButton");
         inventoryButton.Pressed += () => {
             isInventoryOpen = !isInventoryOpen;
             if(isInventoryOpen) {

@@ -1,11 +1,40 @@
-[gd_scene load_steps=2 format=3 uid="uid://d3m518cnmhglb"]
+[gd_scene load_steps=3 format=3 uid="uid://d3m518cnmhglb"]
 
 [ext_resource type="Script" path="res://src/Item.cs" id="1_yuujv"]
+[ext_resource type="Texture2D" uid="uid://cwjb4qyiwuma2" path="res://assets/ItemImages/GenericJellyItem.png" id="2_7k6rt"]
 
-[node name="Item" type="Node2D"]
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 644.0
+offset_bottom = 148.0
 script = ExtResource("1_yuujv")
 metadata/ItemType = 0
 metadata/Rarity = 0
 metadata/Cost = 0.0
-metadata/Name = "GENERIC"
-metadata/Texture = null
+metadata/Name = ""
+metadata/Image = Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_right = 68.0
+offset_bottom = 66.0
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_7k6rt")
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "HELLOW HOW ARE YOU"
+
+[node name="Cost" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Rarity" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Type" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
