@@ -30,9 +30,13 @@ public partial class Player : Control {
 }
 
 public enum Personality {
-	Jolly = 1, Cheapskate = 2,
+	Jolly = 1, Cheapskate = 2, Foolhardy = 3, Cowardly = 4,
 }
 
 public enum PlayerClass {
 	Archer = 1, Warrior = 2, Mage = 3,
+}
+
+public enum SpecialTrait {
+	VsUndead = 1, VsGoblins = 2, Dungeoneer = 3, Diver = 4, VsDragon = 5, CurseHunter = 6,
 }

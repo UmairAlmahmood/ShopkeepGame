@@ -77,7 +77,7 @@ public partial class Item : Control {
 
 //Enums For Items
 public enum ItemType {
-	Weapon = 1, Potion = 2, Armour = 3,
+	Sword = 1, Bow = 2, Staff = 3, Potion = 4, Armour = 5,
 }
 
 enum Rarity {
@@ -85,5 +85,9 @@ enum Rarity {
 }
 
 public enum Cursed {
-	None = 0, hemorrhageMoney = 1, PoisonusIvy = 2, Tipsy = 3, DoubleToil = 4,
+	None = 0, HemorrhageMoney = 1, PoisonIvy = 2, Tipsy = 3, DoubleToil = 4, DoubleTrouble = 5,
+}
+
+public enum ItemTrait {
+	VsUndead = 1, VsGoblins = 2, Dungeoneer = 3, Diver = 4, VsDragon = 5, Broken = 6, None = 7,
 }
