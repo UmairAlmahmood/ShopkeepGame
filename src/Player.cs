@@ -10,10 +10,19 @@ public partial class Player : Control {
 	Label nameLabel;
 	TextureRect portraitRect;
 	public override void _Ready() {
+		classLabel = GetNode<Label>("VBoxContainer/HBoxContainer/Class");
+		nameLabel = GetNode<Label>("VBoxContainer/HBoxContainer/Name");
+		portraitRect = GetNode<TextureRect>("VBoxContainer/Portrait");
+		
+
 		portraitImage = (Texture2D)GetMeta("Portrait");
+		portraitRect.Texture = portraitImage;
 		name = (String)GetMeta("Name");
-		personality = (Personality)(int)GetMeta("Personality");
+		nameLabel.Text = name;
 		playerClass = (PlayerClass)(int)GetMeta("Class");
+		classLabel.Text = playerClass.ToString();
+
+		personality = (Personality)(int)GetMeta("Personality");
 	}
 
 	public override void _Process(double delta) {
@@ -25,5 +34,5 @@ enum Personality {
 }
 
 enum PlayerClass {
-	Archer = 1, Melee = 2, Mage = 3,
+	Archer = 1, Warrior = 2, Mage = 3,
 }

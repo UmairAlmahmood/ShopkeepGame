@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://da21yxsvrkju3"]
+[gd_scene load_steps=9 format=3 uid="uid://da21yxsvrkju3"]
 
 [ext_resource type="Script" path="res://src/ShopKeepWorld.cs" id="1_u08rc"]
 [ext_resource type="Script" path="res://src/UISwitcher.cs" id="1_wubux"]
 [ext_resource type="Script" path="res://src/Inventory.cs" id="2_jvvst"]
+[ext_resource type="Texture2D" uid="uid://6fo8w7mlrm7f" path="res://assets/ShopArt/background-wip.png" id="2_w7srx"]
 [ext_resource type="PackedScene" uid="uid://cs0hw43iaprtg" path="res://scenes/DialogueBox.tscn" id="3_ouxon"]
 [ext_resource type="Texture2D" uid="uid://cju1l6srjua2" path="res://assets/ShopArt/Inventory-button.png" id="4_3rtjg"]
 [ext_resource type="Texture2D" uid="uid://cgqrwmtiykjon" path="res://assets/ShopArt/Shop-lvl-1.png" id="4_4pylg"]
@@ -14,7 +15,15 @@ script = ExtResource("1_u08rc")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+[node name="Background" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_w7srx")
+
+[node name="ShopFront" type="TextureRect" parent="CanvasLayer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -55,6 +64,7 @@ texture_normal = ExtResource("4_3rtjg")
 script = ExtResource("4_jab51")
 
 [node name="Inventory" type="Control" parent="CanvasLayer"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -78,15 +88,17 @@ theme_override_constants/margin_top = 120
 theme_override_constants/margin_right = 80
 theme_override_constants/margin_bottom = 100
 
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Inventory/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+color = Color(0.231373, 0.231373, 0.231373, 0.321569)
+
 [node name="GridContainer" type="GridContainer" parent="CanvasLayer/Inventory/MarginContainer"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/h_separation = 20
 theme_override_constants/v_separation = 40
 columns = 9
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Inventory/MarginContainer"]
-layout_mode = 2
-color = Color(0.231373, 0.231373, 0.231373, 0.321569)
 
 [node name="CustomerView" type="Control" parent="CanvasLayer"]
 layout_mode = 3
@@ -102,3 +114,25 @@ offset_left = 544.0
 offset_top = 767.0
 offset_right = 544.0
 offset_bottom = 767.0
+
+[node name="PlayerPos" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ItemPlace" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 164.0
+offset_top = 700.0
+offset_right = 318.0
+offset_bottom = 820.0

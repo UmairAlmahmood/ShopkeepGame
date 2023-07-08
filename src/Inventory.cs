@@ -9,7 +9,10 @@ public partial class Inventory : Control {
     PackedScene itemScene;
     Texture2D itemTexture;
     GridContainer inventoryMenu;
+    Control itemPlace;
+    bool isSellingItem = false;
     public override void _Ready() {
+        itemPlace = GetNode<Control>("../ItemPlace");
 		Random randomNumGen = new Random();
         itemScene = ResourceLoader.Load<PackedScene>("res://scenes/Item.tscn");
         itemTexture = ResourceLoader.Load<Texture2D>("res://assets/ItemImages/GenericJellyItem.png");
@@ -28,12 +31,22 @@ public partial class Inventory : Control {
                 ItemType.Armour => 75,
                 _ => 50,
             };
-            item.SetMeta("Cost", (float)Math.Round(((randomNumGen.NextDouble() + baseLinePrice)*Math.Pow(rarity, 3)), 2));
+            item.SetMeta("Cost", (float)Math.Round(((randomNumGen.NextDouble()*10 + baseLinePrice)*Math.Pow(rarity, 3)), 2));
             item.SetMeta("Image", itemTexture);
             itemsList.Add(item);
             item.setSize();
             inventoryMenu.AddChild(item);
+            item.ClickedOnItem += ItemClickedOn;
         }
         base._Ready();
+    }
+    
+    void ItemClickedOn(Item item) {
+        itemsList.Remove(item);
+        inventoryMenu.RemoveChild(item);
+        item.isPressable = false;
+        item.Position = Vector2.Zero;
+        item.border.Hide();
+        itemPlace.AddChild(item);
     }
 }

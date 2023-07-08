@@ -12,16 +12,22 @@ public partial class Item : Control {
 	Label Cost;
 	Label Type;
 	Label Rarity;
-	VBoxContainer Vbox;
+	MarginContainer marginContainer;
+	public NinePatchRect border;
+	bool isMouseInside = false;
+	public bool isPressable = true;
 	public override void _Ready() {
-		Vbox = GetNode<VBoxContainer>("VBoxContainer");
-		Size = Vbox.Size;
-		CustomMinimumSize = Vbox.Size;
-		itemImage = GetNode<TextureRect>("VBoxContainer/TextureRect");
-		itemNameLabel = GetNode<Label>("VBoxContainer/Label");
-		Cost = GetNode<Label>("VBoxContainer/Cost");
-		Type = GetNode<Label>("VBoxContainer/HBoxContainer/Type");
-		Rarity = GetNode<Label>("VBoxContainer/HBoxContainer/Rarity");
+		marginContainer = GetNode<MarginContainer>("MarginContainer");
+		Size = marginContainer.Size;
+		CustomMinimumSize = marginContainer.Size;
+		itemImage = GetNode<TextureRect>("MarginContainer/VBoxContainer/TextureRect");
+		itemNameLabel = GetNode<Label>("MarginContainer/VBoxContainer/Label");
+		Cost = GetNode<Label>("MarginContainer/VBoxContainer/Cost");
+		Type = GetNode<Label>("MarginContainer/VBoxContainer/HBoxContainer/Type");
+		Rarity = GetNode<Label>("MarginContainer/VBoxContainer/HBoxContainer/Rarity");
+		border = GetNode<NinePatchRect>("Border");
+		border.Hide();
+		border.Size = Size;
 
 		type = (ItemType)(int)GetMeta("ItemType");
 		Type.Text = type.ToString();
@@ -34,16 +40,33 @@ public partial class Item : Control {
 		itemNameLabel.Text = name;
 		image = (Texture2D)GetMeta("Image");
 		itemImage.Texture = image;
+		
+		MouseEntered += () => {
+			if(isPressable) {
+                border.Show();
+                isMouseInside = true;
+			}
+		};
+		MouseExited += () => {
+			border.Hide();
+			isMouseInside = false;
+		};
 	}
 	 
 	public void setSize() {
-		Vbox = GetNode<VBoxContainer>("VBoxContainer");
-		Size = Vbox.Size;
-		CustomMinimumSize = Vbox.Size;
+		marginContainer = GetNode<MarginContainer>("MarginContainer");
+		Size = marginContainer.Size;
+		CustomMinimumSize = marginContainer.Size;
 	}
 
 	public override void _Process(double delta) {
+		if(Input.IsActionJustReleased("MouseClicked") && isMouseInside && isPressable) {
+			EmitSignal(SignalName.ClickedOnItem, this);
+		}
 	}
+
+	[Signal]
+	public delegate void ClickedOnItemEventHandler(Item item);
 }
 
 //Enums For Items
