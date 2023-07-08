@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://src/ShopKeepWorld.cs" id="1_u08rc"]
 [ext_resource type="Script" path="res://src/UISwitcher.cs" id="1_wubux"]
 [ext_resource type="Script" path="res://src/Inventory.cs" id="2_jvvst"]
-[ext_resource type="Texture2D" uid="uid://6fo8w7mlrm7f" path="res://assets/ShopArt/background-wip.png" id="2_w7srx"]
+[ext_resource type="Texture2D" uid="uid://dc4srcbl2plme" path="res://assets/ShopArt/background-town.png" id="2_r7cmy"]
 [ext_resource type="PackedScene" uid="uid://cs0hw43iaprtg" path="res://scenes/DialogueBox.tscn" id="3_ouxon"]
 [ext_resource type="Texture2D" uid="uid://cju1l6srjua2" path="res://assets/ShopArt/Inventory-button.png" id="4_3rtjg"]
 [ext_resource type="Texture2D" uid="uid://cgqrwmtiykjon" path="res://assets/ShopArt/Shop-lvl-1.png" id="4_4pylg"]
@@ -21,7 +21,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_w7srx")
+texture = ExtResource("2_r7cmy")
 
 [node name="ShopFront" type="TextureRect" parent="CanvasLayer"]
 anchors_preset = 15

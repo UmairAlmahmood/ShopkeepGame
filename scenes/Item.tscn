@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://d3m518cnmhglb"]
 
 [ext_resource type="Script" path="res://src/Item.cs" id="1_yuujv"]
-[ext_resource type="Texture2D" uid="uid://cwjb4qyiwuma2" path="res://assets/ItemImages/GenericJellyItem.png" id="2_7k6rt"]
+[ext_resource type="Texture2D" uid="uid://baht6lqjqd5cl" path="res://assets/ItemImages/basic-sword-texture.png" id="3_2t056"]
 [ext_resource type="Texture2D" uid="uid://wwvvbpfw2v5w" path="res://assets/ItemImages/Border.png" id="3_bxffq"]
 
 [node name="Control" type="Control"]
@@ -41,7 +41,7 @@ layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-texture = ExtResource("2_7k6rt")
+texture = ExtResource("3_2t056")
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
