@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 
 public partial class Inventory : Control {
-	List<Item> itemsList = new List<Item>();
+	public static List<Item> itemsList = new List<Item>();
     [Export]
     int numItems = 5;
     PackedScene itemScene;

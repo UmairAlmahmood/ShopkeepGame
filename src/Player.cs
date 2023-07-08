@@ -23,9 +23,41 @@ public partial class Player : Control {
 		classLabel.Text = playerClass.ToString();
 
 		personality = (Personality)(int)GetMeta("Personality");
+
+		GD.Print(GetMeta("Name") + "'s willingness is to buy " + Inventory.itemsList[0].GetMeta("Name") + ": " + CalculatePurchaseWillingess(Inventory.itemsList[0]));
 	}
 
 	public override void _Process(double delta) {
+	}
+
+	public float CalculatePurchaseWillingess(Item item) {
+
+		float willingness = 0.0f;
+
+		if((int)GetMeta("Class") == (int)item.GetMeta("ItemType")) {
+			willingness += 0.5f;
+			GD.Print("class/item match (+0.5)");
+		}
+
+		if((int)GetMeta("Personality") == (int)Personality.Jolly) {
+			willingness += 0.2f;
+			GD.Print("Jolly (+0.2)");
+			if((int)item.GetMeta("isCursed") != 0) willingness -= 0.3f;
+		}
+		if((int)GetMeta("Personality") == (int)Personality.Cheapskate) {
+			willingness -= 0.3f;
+			GD.Print("Cheapskate (-0.3)");			
+			if((int)item.GetMeta("isCursed") != 0) willingness -= 0.3f;
+		}
+		if((int)GetMeta("Personality") == (int)Personality.Foolhardy) {
+			willingness += 0.2f;
+			GD.Print("Foolhardy (+0.2)");
+		}
+		if((int)GetMeta("Personality") == (int)Personality.Cowardly) {
+			if((int)item.GetMeta("isCursed") != 0) willingness -= 0.5f;
+		}
+
+		return willingness;
 	}
 }
 
@@ -34,9 +66,10 @@ public enum Personality {
 }
 
 public enum PlayerClass {
-	Archer = 1, Warrior = 2, Mage = 3,
+	Warrior = 1, Archer = 2, Mage = 3,
 }
 
 public enum SpecialTrait {
 	VsUndead = 1, VsGoblins = 2, Dungeoneer = 3, Diver = 4, VsDragon = 5, CurseHunter = 6,
 }
+
