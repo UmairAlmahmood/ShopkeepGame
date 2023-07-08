@@ -18,8 +18,9 @@ public partial class Inventory : Control {
         itemTexture = ResourceLoader.Load<Texture2D>("res://assets/ItemImages/basic-sword-texture.png");
         inventoryMenu = GetNode<GridContainer>("MarginContainer/GridContainer");
         for(int i = 0; i<numItems; i++) {
+
             Item item = itemScene.Instantiate<Item>();
-            ItemType itemType = (ItemType)(int)randomNumGen.Next(1, 4);
+            ItemType itemType = (ItemType)(int)randomNumGen.Next(1, 6);
             item.SetMeta("ItemType", (int)itemType);
 
             int rarity = randomNumGen.Next(1, 21);
@@ -27,7 +28,6 @@ public partial class Inventory : Control {
             else if(rarity <= 15) rarity = 2;
             else if(rarity <= 18) rarity = 3;
             else  rarity = 4;
-
             
 
             item.SetMeta("Rarity", rarity);
