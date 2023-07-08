@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://da21yxsvrkju3"]
+[gd_scene load_steps=10 format=3 uid="uid://da21yxsvrkju3"]
 
 [ext_resource type="Script" path="res://src/ShopKeepWorld.cs" id="1_u08rc"]
 [ext_resource type="Script" path="res://src/UISwitcher.cs" id="1_wubux"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cju1l6srjua2" path="res://assets/ShopArt/Inventory-button.png" id="4_3rtjg"]
 [ext_resource type="Texture2D" uid="uid://cgqrwmtiykjon" path="res://assets/ShopArt/Shop-lvl-1.png" id="4_4pylg"]
 [ext_resource type="Script" path="res://src/InvTextureButton.cs" id="6_81yfo"]
+[ext_resource type="Texture2D" uid="uid://dyskuftbnef0p" path="res://assets/ShopArt/Inventory-button-open.png" id="6_ds2e6"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_u08rc")
@@ -50,17 +51,19 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -513.0
-offset_top = -136.0
-offset_right = -266.0
+offset_left = -518.0
+offset_top = -160.0
+offset_right = -259.0
 offset_bottom = -27.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_constants/separation = 50
+alignment = 2
 
 [node name="InventoryButton" type="TextureButton" parent="CanvasLayer/UISwitcher/HBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("4_3rtjg")
+texture_hover = ExtResource("6_ds2e6")
 stretch_mode = 3
 script = ExtResource("6_81yfo")
 

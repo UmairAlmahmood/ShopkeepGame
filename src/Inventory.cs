@@ -217,7 +217,7 @@ public partial class Inventory : Control {
 
 
         bool isPrefixed = randint.Next(0, 2) == 1;
-        GD.Print("Prefix: " + isPrefixed);
+        
         if(isPrefixed) {
             itemName += ItemTrait switch {
                 1 => VsUndeadPrefix[randint.Next(0, VsUndeadPrefix.Length)],
