@@ -1,5 +1,7 @@
 using Godot;
 using System;
+using System.Runtime.ExceptionServices;
+
 
 public partial class Player : Control {
 	Texture2D portraitImage;
@@ -66,6 +68,15 @@ public partial class Player : Control {
 		}
 
 		return willingness;
+	}
+
+	public static String generatePlayerName() {
+		String[] FirstNames = {"Edmund", "Thad", "Gaston", "John", "Fletcher", "Kenneth", "Jonathan"};
+		String[] LastNames = {"Stoneroar", "Firemourn", "Heavyhorn", "Evenbreeze", "Sagetree", "Blueguard", "Greendane", "Stoneshine", "Regalkeep", "Fletcher", "Kingsguard"};
+
+		Random randint = new Random();
+
+		return FirstNames[randint.Next(0, FirstNames.Length)] + " " + LastNames[randint.Next(0, LastNames.Length)];
 	}
 }
 
