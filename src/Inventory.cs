@@ -33,6 +33,7 @@ public partial class Inventory : Control {
             };
             item.SetMeta("Cost", (float)Math.Round(((randomNumGen.NextDouble()*10 + baseLinePrice)*Math.Pow(rarity, 3)), 2));
             item.SetMeta("Image", itemTexture);
+            item.SetMeta("isCursed", (randomNumGen.NextDouble() < 0.9 ? (int)Cursed.None : randomNumGen.Next(1, 5)));
             itemsList.Add(item);
             item.setSize();
             inventoryMenu.AddChild(item);

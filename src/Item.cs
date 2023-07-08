@@ -12,9 +12,11 @@ public partial class Item : Control {
 	Label Cost;
 	Label Type;
 	Label Rarity;
+	Label Cursed;
 	MarginContainer marginContainer;
 	public NinePatchRect border;
 	bool isMouseInside = false;
+	public Cursed cursed = (Cursed)0;
 	public bool isPressable = true;
 	public override void _Ready() {
 		marginContainer = GetNode<MarginContainer>("MarginContainer");
@@ -25,6 +27,7 @@ public partial class Item : Control {
 		Cost = GetNode<Label>("MarginContainer/VBoxContainer/Cost");
 		Type = GetNode<Label>("MarginContainer/VBoxContainer/HBoxContainer/Type");
 		Rarity = GetNode<Label>("MarginContainer/VBoxContainer/HBoxContainer/Rarity");
+		Cursed = GetNode<Label>("MarginContainer/VBoxContainer/HBoxContainer/Is Cursed");
 		border = GetNode<NinePatchRect>("Border");
 		border.Hide();
 		border.Size = Size;
@@ -35,6 +38,9 @@ public partial class Item : Control {
 		Rarity.Text = rarity.ToString();
 		cost = (float)GetMeta("Cost");
 		Cost.Text = "Cost: $" + cost.ToString();
+		cursed = (Cursed)(int)GetMeta("isCursed");
+		GD.Print(cursed.ToString());
+		Cursed.Text = (int)cursed != 0 ? "Cursed" : "";
 
 		name = (String)GetMeta("Name");
 		itemNameLabel.Text = name;
@@ -76,4 +82,8 @@ public enum ItemType {
 
 enum Rarity {
 	Common = 1, Uncommon = 2, Rare = 3, Legendary = 4,
+}
+
+public enum Cursed {
+	None = 0, hemorrhageMoney = 1, PoisonusIvy = 2, Tipsy = 3, DoubleToil = 4,
 }

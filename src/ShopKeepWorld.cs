@@ -9,9 +9,11 @@ public partial class ShopKeepWorld : Node2D {
 	PackedScene playerScene;
 	Texture2D genericTexture;
 	Control playerPos;
-	Control dialogueBox;
+	DialogueBox dialogueBox;
+	Player currentPlayer;
+    Random randomNumGen;
 	public override void _Ready() {
-		dialogueBox = GetNode<Control>("CanvasLayer/DialogueBox");
+		dialogueBox = GetNode<DialogueBox>("CanvasLayer/DialogueBox");
 		Color originalColor = dialogueBox.Modulate;
 		Color newColor = originalColor;
 		newColor.A = 0.0f;
@@ -20,7 +22,7 @@ public partial class ShopKeepWorld : Node2D {
 
 		genericTexture = ResourceLoader.Load<Texture2D>("res://assets/ItemImages/GenericJellyItem.png");
 		playerScene = ResourceLoader.Load<PackedScene>("res://players/Player.tscn");
-		Random randomNumGen = new Random();
+		randomNumGen = new Random();
 		for(int i = 0; i<numberOfPlayers; i++) {
 			Player player = playerScene.Instantiate<Player>();
 			player.SetMeta("Name", "John Smith");
@@ -29,9 +31,11 @@ public partial class ShopKeepWorld : Node2D {
 			player.SetMeta("Class", randomNumGen.Next(1, 4));
 			playersQueue.Enqueue(player);
 		}
-		playerPos.AddChild(playersQueue.Dequeue());
+		currentPlayer = playersQueue.Dequeue();
+		playerPos.AddChild(currentPlayer);
 		Tween tween = GetTree().CreateTween();
 		tween.TweenProperty(dialogueBox, "modulate", originalColor, 1.5f);
+		dialogueBox.dialogue.Enqueue(currentPlayer.name + ": " + Dialogue.greetings[randomNumGen.Next(0, Dialogue.greetings.Count)]);
 	}
 
 	public override void _Process(double delta) {

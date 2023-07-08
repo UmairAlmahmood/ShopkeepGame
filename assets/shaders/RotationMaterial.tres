@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bqvgspwbx8xky"]
+
+[ext_resource type="Shader" path="res://assets/shaders/PerspectiveShader.gdshader" id="1_0xfoy"]
+
+[resource]
+shader = ExtResource("1_0xfoy")
+shader_parameter/quat = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)

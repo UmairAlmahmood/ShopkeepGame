@@ -3,10 +3,10 @@ using System;
 
 public partial class Player : Control {
 	Texture2D portraitImage;
-	String name;
-	Personality personality;
-	PlayerClass playerClass;
-	Label classLabel;
+	public String name;
+	public Personality personality;
+	public PlayerClass playerClass;
+	public Label classLabel;
 	Label nameLabel;
 	TextureRect portraitRect;
 	public override void _Ready() {
@@ -29,10 +29,10 @@ public partial class Player : Control {
 	}
 }
 
-enum Personality {
+public enum Personality {
 	Jolly = 1, Cheapskate = 2,
 }
 
-enum PlayerClass {
+public enum PlayerClass {
 	Archer = 1, Warrior = 2, Mage = 3,
 }

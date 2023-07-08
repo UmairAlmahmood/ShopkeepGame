@@ -1,0 +1,6 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://xr3ebx367kyj"]
+
+[ext_resource type="Shader" path="res://assets/shaders/PutImageOn.gdshader" id="1_makqs"]
+
+[resource]
+shader = ExtResource("1_makqs")
