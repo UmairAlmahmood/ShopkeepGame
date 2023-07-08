@@ -61,6 +61,7 @@ theme_override_constants/separation = 50
 [node name="InventoryButton" type="TextureButton" parent="CanvasLayer/UISwitcher/HBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("4_3rtjg")
+stretch_mode = 3
 script = ExtResource("4_jab51")
 
 [node name="Inventory" type="Control" parent="CanvasLayer"]
