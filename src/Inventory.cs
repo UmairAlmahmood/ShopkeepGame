@@ -21,7 +21,15 @@ public partial class Inventory : Control {
             Item item = itemScene.Instantiate<Item>();
             ItemType itemType = (ItemType)(int)randomNumGen.Next(1, 4);
             item.SetMeta("ItemType", (int)itemType);
-            int rarity = randomNumGen.Next(1, 5);
+
+            int rarity = randomNumGen.Next(1, 21);
+            if(rarity <= 10) rarity = 1;
+            else if(rarity <= 15) rarity = 2;
+            else if(rarity <= 18) rarity = 3;
+            else  rarity = 4;
+
+            
+
             item.SetMeta("Rarity", rarity);
             int cursed = (randomNumGen.NextDouble() < 0.9 ? (int)Cursed.None : randomNumGen.Next(1, 5));
             int trait = rarity>1 ? (randomNumGen.NextDouble() < 0.5 ? (int)ItemTrait.None : randomNumGen.Next(1, 6)) : (int)ItemTrait.None;
@@ -128,8 +136,8 @@ public partial class Inventory : Control {
         String[] UncommonPrefix = {"Trusty", "Stalwart", "Journeyman's"};
         String[] UncommonSuffix = {"of the Adventurer"};
 
-        String[] CommonPrefix = {"Ordinary", "Legendary", "Squire's"};
-        String[] CommonSuffix = {"of the Amateur Adventurer"};
+        String[] CommonPrefix = {"Ordinary", "Legendary", "Squire's", "Steel"};
+        String[] CommonSuffix = {"of the Amateur Adventurer", ""};
 
 
 
@@ -217,7 +225,7 @@ public partial class Inventory : Control {
 
 
         bool isPrefixed = randint.Next(0, 2) == 1;
-        
+
         if(isPrefixed) {
             itemName += ItemTrait switch {
                 1 => VsUndeadPrefix[randint.Next(0, VsUndeadPrefix.Length)],
