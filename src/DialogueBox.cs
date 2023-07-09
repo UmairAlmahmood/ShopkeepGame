@@ -30,4 +30,9 @@ public partial class DialogueBox : Control {
         text.Text += nextDialogue;
         scrollContainer.ScrollVertical = (int)(scrollContainer.GetVScrollBar().MaxValue - 20);
     }
+
+    public void Reset() {
+        dialogue.Clear();
+        text.Text = "";
+    }
 }

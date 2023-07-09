@@ -141,6 +141,7 @@ public partial class ShopKeepWorld : Node2D {
 
 		currentPlayer = playersQueue.Dequeue();
 		playerPos.AddChild(currentPlayer);
+		dialogueBox.Reset();
 		dialogueBox.dialogue.Enqueue(currentPlayer.name + ": " + Dialogue.getGreeting(currentPlayer.personality, currentPlayer.playerClass, currentPlayer.specialTrait));
         dialogueBox.setText();
         dialoguePicker.SetOptions(new List<(string, Action)>{

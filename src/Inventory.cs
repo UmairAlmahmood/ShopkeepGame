@@ -11,6 +11,7 @@ public partial class Inventory : Control {
     GridContainer inventoryMenu;
     Control itemPlace;
     Item sellingItem = null;
+    public float EsitmatedTotal = 0.00f;
     public override void _Ready() {
         itemPlace = GetNode<Control>("../ItemPlace");
 		Random randomNumGen = new Random();
@@ -54,6 +55,7 @@ public partial class Inventory : Control {
                 _ => 50,
             };
             item.SetMeta("Cost", (float)Math.Round(((randomNumGen.NextDouble()*10 + baseLinePrice)*Math.Pow(rarity, 3)), 2));
+            EsitmatedTotal += (float)item.GetMeta("Cost");
             item.SetMeta("Image", itemTexture);
             item.SetMeta("isCursed", cursed);
 
@@ -64,6 +66,11 @@ public partial class Inventory : Control {
             inventoryMenu.AddChild(item);
             item.ClickedOnItem += ItemClickedOn;
         }
+        Hidden += () => {
+            foreach(Item item in itemsList) {
+                item.isMouseInside = false;
+            }
+        };
         base._Ready();
     }
     
@@ -79,17 +86,19 @@ public partial class Inventory : Control {
             EmitSignal(SignalName.ItemSent, item);
 
         } else {
-            itemsList.Remove(item);
-            inventoryMenu.RemoveChild(item);
-            item.isPressable = false;
-            item.Position = Vector2.Zero;
-            item.border.Hide();
-            itemPlace.AddChild(item);
-            
             itemsList.Add(sellingItem);
             sellingItem.Reparent(inventoryMenu);
             sellingItem.isPressable = true;
             sellingItem = item;
+            sellingItem.isMouseInside = false;
+
+            itemsList.Remove(item);
+            inventoryMenu.RemoveChild(item);
+            item.isPressable = false;
+            item.Position = Vector2.Zero;
+            item.isMouseInside = false;
+            item.border.Hide();
+            itemPlace.AddChild(item);
             EmitSignal(SignalName.ItemSent, item);
             
         }

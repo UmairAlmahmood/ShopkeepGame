@@ -30,7 +30,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-z_index = 5
+z_index = 2
 layout_mode = 2
 
 [node name="Class" type="Label" parent="VBoxContainer/HBoxContainer"]

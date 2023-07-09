@@ -11,8 +11,8 @@ font_color = Color(0.431373, 0, 0.027451, 1)
 [node name="Control" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 203.0
-offset_bottom = 204.0
+offset_right = 239.0
+offset_bottom = 275.0
 focus_mode = 2
 script = ExtResource("1_yuujv")
 metadata/ItemType = 0
@@ -61,9 +61,8 @@ text = "HELLOW HOW ARE YOU"
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="Cost" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="Cost" type="LineEdit" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
