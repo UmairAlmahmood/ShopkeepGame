@@ -82,7 +82,7 @@ public partial class ShopKeepWorld : Node2D {
 		dialogueBox.setText();
 		timer.Start(.5);
 		await ToSignal(timer, "timeout");
-		dialogueBox.dialogue.Enqueue("\n\n" + currentPlayer.name + ": " + "Well lets see what you have in store");
+		dialogueBox.dialogue.Enqueue("\n\n" + currentPlayer.name + ": " + "Well, let's see what you have in store");
 		dialogueBox.setText();
     }
 
