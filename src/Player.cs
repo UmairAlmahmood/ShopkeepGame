@@ -88,6 +88,10 @@ public partial class Player : Control {
 			willingness -= (int)item.GetMeta("Rarity") == (int)Rarity.Legendary ? 0.1f : 0.3f;
 		}
 
+		if((float)item.GetMeta("Cost") <= (float)GetMeta("Budget")) {
+			willingness *= 1/ ((float)item.GetMeta("Cost") / (float)GetMeta("Budget"));
+		}
+
 		return willingness + mod;
 	}
 
