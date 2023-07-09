@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://da21yxsvrkju3"]
+[gd_scene load_steps=23 format=3 uid="uid://da21yxsvrkju3"]
 
 [ext_resource type="Script" path="res://src/ShopKeepWorld.cs" id="1_u08rc"]
 [ext_resource type="Script" path="res://src/UISwitcher.cs" id="1_wubux"]
@@ -16,6 +16,8 @@
 [ext_resource type="PackedScene" uid="uid://dherius22xbo0" path="res://scenes/DialoguePicker.tscn" id="10_bllrw"]
 [ext_resource type="Script" path="res://src/InfoButton.cs" id="11_rtwsa"]
 [ext_resource type="Texture2D" uid="uid://buxo7qvde4rxq" path="res://assets/ShopArt/Inventory-window.png" id="13_b057w"]
+[ext_resource type="Texture2D" uid="uid://thj5kmb2csg3" path="res://assets/ShopArt/coin-pouch.png" id="13_ia23k"]
+[ext_resource type="Script" path="res://src/CoinPouch.cs" id="14_h3e85"]
 [ext_resource type="Script" path="res://src/Info.cs" id="14_tfjrw"]
 [ext_resource type="Texture2D" uid="uid://bbb1mwfkw7pgd" path="res://assets/ShopArt/Info-Window.png" id="15_ioepf"]
 [ext_resource type="AudioStream" uid="uid://cvcb0fvbseysi" path="res://assets/Music/不思議な場所_loop.wav" id="19_0f882"]
@@ -123,6 +125,18 @@ offset_bottom = 902.0
 layout_mode = 2
 texture_normal = ExtResource("9_nba87")
 script = ExtResource("11_rtwsa")
+
+[node name="CoinPouchWrapper" type="HBoxContainer" parent="CanvasLayer/UISwitcher"]
+layout_mode = 0
+offset_left = 1704.0
+offset_top = 849.0
+offset_right = 1930.0
+offset_bottom = 1043.0
+
+[node name="CoinPouch" type="TextureButton" parent="CanvasLayer/UISwitcher/CoinPouchWrapper"]
+layout_mode = 2
+texture_normal = ExtResource("13_ia23k")
+script = ExtResource("14_h3e85")
 
 [node name="CustomerView" type="Control" parent="CanvasLayer"]
 layout_mode = 3
@@ -235,6 +249,15 @@ But at the same time... remember that this is a business! And like any business,
 
 Good Luck!
 The Shopkeepers' Guild"
+
+[node name="CoinsAmount" type="RichTextLabel" parent="CanvasLayer"]
+offset_left = 1560.0
+offset_top = 808.0
+offset_right = 1808.0
+offset_bottom = 896.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 25
+text = "Money: $0.00"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="CanvasLayer"]
 environment = SubResource("Environment_pkoxl")

@@ -18,7 +18,9 @@ public partial class ShopKeepWorld : Node2D {
 	float moneyEarned = 0.00f;
 	float currentWillingness = 0;
 	Item currentItem;
+	RichTextLabel coinsEarned;
 	public override void _Ready() {
+		coinsEarned = GetNode<RichTextLabel>("/root/World/CanvasLayer/CoinsAmount");
 		inventory = GetNode<Inventory>("CanvasLayer/Inventory");
 		inventory.ItemSent += itemSentHandler;
 		timer = GetNode<Timer>("/root/World/Timer");
@@ -128,6 +130,7 @@ public partial class ShopKeepWorld : Node2D {
             dialogueBox.setText();
 			if(buys == BuyEnum.WillBuy) {
 				moneyEarned += inventory.ItemSold();
+				coinsEarned.Text = "Money: $" + Math.Round(moneyEarned, 2);
 				cyclePlayer();
 			} else if (buys == BuyEnum.TooExpensive) {
 				dialoguePicker.SetOptions( new List<(string, Action)> {
@@ -154,6 +157,7 @@ public partial class ShopKeepWorld : Node2D {
                 dialogueBox.dialogue.Enqueue("\n\n" + currentPlayer.name + ": " + message);
                 dialogueBox.setText();
 				moneyEarned += inventory.ItemSold();
+				coinsEarned.Text = "Money: $" + Math.Round(moneyEarned, 2);
 				cyclePlayer();
 			} else if(buys == BuyEnum.TooExpensive) {
                 dialogueBox.dialogue.Enqueue("\n\n" + currentPlayer.name + ": " + "My friend it is still too expensive");

@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=3 uid="uid://jvh2ijy6dbw6"]
+
+[ext_resource type="Script" path="res://src/Info.cs" id="1_ujm3n"]
+[ext_resource type="Texture2D" uid="uid://bbb1mwfkw7pgd" path="res://assets/ShopArt/Info-Window.png" id="2_mhllx"]
+
+[node name="Info" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_ujm3n")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.901961, 0.698039, 0.521569, 1)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 611.0
+offset_top = 192.0
+offset_right = 1273.0
+offset_bottom = 992.0
+texture = ExtResource("2_mhllx")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TextureRect"]
+layout_mode = 0
+offset_left = 114.0
+offset_top = 40.0
+offset_right = 640.0
+offset_bottom = 727.0
+theme_override_colors/default_color = Color(0.231373, 0.129412, 0.117647, 1)
+text = "Dear hire,
+
+	At the Fantasy Shopkeepers' Guild, we pride ourselves in our outstanding service and ability to cater to the unique needs of our adventurous clients. We hope that you will be up to the task of upholding this!
+
+	A great shopkeeper will take into account everything about the customer; their walks of life, their personality, their aspirations, and so on. Make sure to speak with them, get to know them, and understand what they need and want. Don't be afraid to cut them a bargain if that's what it takes to make a sale.
+
+But at the same time... remember that this is a business! And like any business, the goal is to turn a healthy profit. 
+
+Good Luck!
+The Shopkeepers' Guild"
