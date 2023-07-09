@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://da21yxsvrkju3"]
+[gd_scene load_steps=15 format=3 uid="uid://da21yxsvrkju3"]
 
 [ext_resource type="Script" path="res://src/ShopKeepWorld.cs" id="1_u08rc"]
 [ext_resource type="Script" path="res://src/UISwitcher.cs" id="1_wubux"]
@@ -10,7 +10,9 @@
 [ext_resource type="Script" path="res://src/InvTextureButton.cs" id="6_81yfo"]
 [ext_resource type="Texture2D" uid="uid://dyskuftbnef0p" path="res://assets/ShopArt/Inventory-button-open.png" id="6_ds2e6"]
 [ext_resource type="Texture2D" uid="uid://bfwfoyke7idcy" path="res://assets/ShopArt/Settings-button.png" id="8_kqyim"]
+[ext_resource type="Texture2D" uid="uid://c56xf2rcvhjai" path="res://assets/ShopArt/info-button.png" id="9_nba87"]
 [ext_resource type="PackedScene" uid="uid://dherius22xbo0" path="res://scenes/DialoguePicker.tscn" id="10_bllrw"]
+[ext_resource type="Texture2D" uid="uid://buxo7qvde4rxq" path="res://assets/ShopArt/Inventory-window.png" id="13_b057w"]
 
 [sub_resource type="Environment" id="Environment_pkoxl"]
 background_mode = 3
@@ -88,6 +90,17 @@ offset_bottom = 1057.0
 layout_mode = 2
 texture_normal = ExtResource("8_kqyim")
 
+[node name="InfoButtonWrapper" type="HBoxContainer" parent="CanvasLayer/UISwitcher"]
+layout_mode = 0
+offset_left = 349.0
+offset_top = 708.0
+offset_right = 575.0
+offset_bottom = 902.0
+
+[node name="InfoButton" type="TextureButton" parent="CanvasLayer/UISwitcher/InfoButtonWrapper"]
+layout_mode = 2
+texture_normal = ExtResource("9_nba87")
+
 [node name="CustomerView" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchors_preset = 15
@@ -120,10 +133,10 @@ grow_vertical = 2
 [node name="ItemPlace" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 164.0
+offset_left = 98.0
 offset_top = 700.0
-offset_right = 318.0
-offset_bottom = 820.0
+offset_right = 230.0
+offset_bottom = 822.0
 
 [node name="DialoguePicker" parent="CanvasLayer" instance=ExtResource("10_bllrw")]
 visible = false
@@ -145,6 +158,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 66.0
+offset_top = -2.0
+offset_right = -62.0
+offset_bottom = -18.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -153,10 +170,9 @@ theme_override_constants/margin_top = 120
 theme_override_constants/margin_right = 80
 theme_override_constants/margin_bottom = 100
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Inventory/MarginContainer"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Inventory/MarginContainer"]
 layout_mode = 2
-mouse_filter = 2
-color = Color(0.231373, 0.231373, 0.231373, 0.321569)
+texture = ExtResource("13_b057w")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/Inventory/MarginContainer"]
 layout_mode = 2
