@@ -94,6 +94,21 @@ public partial class Inventory : Control {
             
         }
     }
+    public float ItemSold() {
+        if(sellingItem is not null)
+            itemPlace.GetChild(0).QueueFree();
+        float moneyEarned = sellingItem.cost;
+        sellingItem = null;
+        return moneyEarned;
+    }
+    
+    public void returnItemsToInv() {
+        if(sellingItem is not null) {
+            itemPlace.GetChild(0).Reparent(inventoryMenu);
+            sellingItem.isPressable = true;
+            sellingItem = null;
+        }
+    }
 
     [Signal]
     public delegate void ItemSentEventHandler(Item item);

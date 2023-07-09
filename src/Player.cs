@@ -13,6 +13,7 @@ public partial class Player : Control {
 	Label nameLabel;
 	TextureRect portraitRect;
 	float quitPercentage = 0.0f;
+	float budget = 0.00f;
 	public override void _Ready() {
 		classLabel = GetNode<Label>("VBoxContainer/HBoxContainer/Class");
 		nameLabel = GetNode<Label>("VBoxContainer/HBoxContainer/Name");
@@ -28,6 +29,7 @@ public partial class Player : Control {
 
 		personality = (Personality)(int)GetMeta("Personality");
 		specialTrait = (SpecialTrait)(int)GetMeta("SpecialTrait");
+		budget = (float)GetMeta("Budget");
 
 		GD.Print(GetMeta("Name") + "'s willingness is to buy " + Inventory.itemsList[0].GetMeta("Name") + ": " + CalculatePurchaseWillingess(Inventory.itemsList[0], 0));
 	}
@@ -102,7 +104,19 @@ public partial class Player : Control {
 		}
 		return false;
 	}
-
+	
+	public (bool, String) buy(float willingness, float price) {
+		Random random = new Random();
+		double buyPercentage = random.NextDouble();
+		if(buyPercentage > (1.0-willingness) && price <= budget) {
+			return (true, "This seems perfect, I will take it off your hands\n\n");
+		} else if(buyPercentage < willingness && price > budget) {
+			return (false, "I would buy if it fell within my price range");
+		} else {
+			return (false, "I don't see that I need it specifically");
+		}
+	}
+	
 	public static String generatePlayerName() {
 		String[] FirstNames = {"Edmund", "Thad", "Gaston", "John", "Fletcher", "Kenneth", "Jonathan"};
 		String[] LastNames = {"Stoneroar", "Firemourn", "Heavyhorn", "Evenbreeze", "Sagetree", "Blueguard", "Greendane", "Stoneshine", "Regalkeep", "Fletcher", "Kingsguard"};

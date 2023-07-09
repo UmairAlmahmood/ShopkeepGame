@@ -4,7 +4,7 @@ using System;
 public partial class Item : Control {
 	ItemType type;
 	Rarity rarity;
-	float cost;
+	public float cost;
 	String name;
 	Texture2D image;
 	TextureRect itemImage;
@@ -60,6 +60,8 @@ public partial class Item : Control {
 			if(isPressable) {
                 border.Show();
                 isMouseInside = true;
+			} else {
+				isMouseInside = false;
 			}
 		};
 		MouseExited += () => {
