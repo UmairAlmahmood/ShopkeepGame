@@ -62,7 +62,7 @@ public partial class ShopKeepWorld : Node2D {
 		Tween tween = GetTree().CreateTween();
 		tween.TweenProperty(currentPlayer, "position", newPos, 1.0);
 		tween.TweenProperty(dialogueBox, "modulate", originalColor, 1.0);
-		dialogueBox.dialogue.Enqueue(currentPlayer.name + ": " + Dialogue.getGreeting(currentPlayer.personality, currentPlayer.playerClass, currentPlayer.specialTrait));
+		dialogueBox.dialogue.Enqueue(currentPlayer.name + ": " + Dialogue.getGreeting(currentPlayer.personality, currentPlayer.specialTrait));
 
 		tween.Finished += () => {
 			dialogueBox.setText();
@@ -191,7 +191,7 @@ public partial class ShopKeepWorld : Node2D {
 		Tween tween1 = GetTree().CreateTween();
 		tween1.TweenProperty(currentPlayer, "position", originalPos, 1.0);
 		dialogueBox.Reset();
-		dialogueBox.dialogue.Enqueue(currentPlayer.name + ": " + Dialogue.getGreeting(currentPlayer.personality, currentPlayer.playerClass, currentPlayer.specialTrait));
+		dialogueBox.dialogue.Enqueue(currentPlayer.name + ": " + Dialogue.getGreeting(currentPlayer.personality, currentPlayer.specialTrait));
         dialogueBox.setText();
         dialoguePicker.SetOptions(new List<(string, Action)>{
             ("I see, let me show you something", () => {
