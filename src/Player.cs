@@ -50,13 +50,8 @@ public partial class Player : Control {
 
 
 		if((int)item.GetMeta("ItemType") == (int)ItemType.Potion) {
-			willingness += 0.15f;
+			willingness += 0.1f;
 		}
-
-		if((int)item.GetMeta("ItemType") == (int)ItemType.Potion) {
-			willingness += 0.15f;
-		}
-
 
 		if((int)GetMeta("Personality") == (int)Personality.Jolly) {
 			willingness += 0.1f;

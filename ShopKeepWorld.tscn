@@ -1,11 +1,11 @@
-[gd_scene load_steps=20 format=3 uid="uid://da21yxsvrkju3"]
+[gd_scene load_steps=21 format=3 uid="uid://da21yxsvrkju3"]
 
 [ext_resource type="Script" path="res://src/ShopKeepWorld.cs" id="1_u08rc"]
 [ext_resource type="Script" path="res://src/UISwitcher.cs" id="1_wubux"]
 [ext_resource type="Texture2D" uid="uid://d4jftqjnd6ael" path="res://assets/ShopArt/background-evening.png" id="2_07h10"]
 [ext_resource type="Script" path="res://src/Inventory.cs" id="2_jvvst"]
 [ext_resource type="PackedScene" uid="uid://cs0hw43iaprtg" path="res://scenes/DialogueBox.tscn" id="3_ouxon"]
-[ext_resource type="Theme" path="res://Main.tres" id="4_1uo8q"]
+[ext_resource type="Theme" uid="uid://8wbamidobt85" path="res://Main.tres" id="4_1uo8q"]
 [ext_resource type="Texture2D" uid="uid://cju1l6srjua2" path="res://assets/ShopArt/Inventory-button.png" id="4_3rtjg"]
 [ext_resource type="Texture2D" uid="uid://cgqrwmtiykjon" path="res://assets/ShopArt/Shop-lvl-1.png" id="4_4pylg"]
 [ext_resource type="Script" path="res://src/InvTextureButton.cs" id="6_81yfo"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://buxo7qvde4rxq" path="res://assets/ShopArt/Inventory-window.png" id="13_b057w"]
 [ext_resource type="Script" path="res://src/Info.cs" id="14_tfjrw"]
 [ext_resource type="Texture2D" uid="uid://bbb1mwfkw7pgd" path="res://assets/ShopArt/Info-Window.png" id="15_ioepf"]
+[ext_resource type="AudioStream" uid="uid://cvcb0fvbseysi" path="res://assets/Music/不思議な場所_loop.wav" id="19_0f882"]
 
 [sub_resource type="Environment" id="Environment_pkoxl"]
 background_mode = 3
@@ -245,3 +246,8 @@ environment = SubResource("Environment_pkoxl")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("19_0f882")
+volume_db = 1.0
+autoplay = true
