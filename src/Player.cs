@@ -26,7 +26,7 @@ public partial class Player : Control {
 
 		personality = (Personality)(int)GetMeta("Personality");
 
-		GD.Print(GetMeta("Name") + "'s willingness is to buy " + Inventory.itemsList[0].GetMeta("Name") + ": " + CalculatePurchaseWillingess(Inventory.itemsList[0]));
+		GD.Print(GetMeta("Name") + "'s willingness is to buy " + Inventory.itemsList[0].GetMeta("Name") + ": " + CalculatePurchaseWillingess(Inventory.itemsList[0], 0));
 	}
 
 	public override void _Process(double delta) {
