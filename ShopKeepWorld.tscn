@@ -148,6 +148,7 @@ offset_bottom = 822.0
 
 [node name="DialoguePicker" parent="CanvasLayer" instance=ExtResource("10_bllrw")]
 visible = false
+mouse_filter = 2
 
 [node name="Inventory" type="Control" parent="CanvasLayer"]
 layout_mode = 3
