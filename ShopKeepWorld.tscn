@@ -245,6 +245,31 @@ columns = 7
 [node name="WorldEnvironment" type="WorldEnvironment" parent="CanvasLayer"]
 environment = SubResource("Environment_pkoxl")
 
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+offset_left = 611.0
+offset_top = 192.0
+offset_right = 1273.0
+offset_bottom = 992.0
+texture = ExtResource("15_ioepf")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/TextureRect"]
+layout_mode = 0
+offset_left = 114.0
+offset_top = 40.0
+offset_right = 640.0
+offset_bottom = 727.0
+theme_override_colors/default_color = Color(0.231373, 0.129412, 0.117647, 1)
+text = "Dear hire,
+
+	At the Fantasy Shopkeepers' Guild, we pride ourselves in our outstanding service and ability to cater to the unique needs of our adventurous clients. We hope that you will be up to the task of upholding this!
+
+	A great shopkeeper will take into account everything about the customer; their walks of life, their personality, their aspirations, and so on. Make sure to speak with them, get to know them, and understand what they need and want. Don't be afraid to cut them a bargain if that's what it takes to make a sale.
+
+But at the same time... remember that this is a business! And like any business, the goal is to turn a healthy profit. 
+
+Good Luck!
+The Shopkeepers' Guild"
+
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.1
 
