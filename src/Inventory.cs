@@ -26,7 +26,7 @@ public partial class Inventory : Control {
             itemTexture = itemType switch {
                 ItemType.Sword => ResourceLoader.Load<Texture2D>("res://assets/ItemImages/basic-sword-texture.png"),
                 ItemType.Bow => ResourceLoader.Load<Texture2D>("res://assets/ItemImages/basic-bow-texture.png"),
-                ItemType.Potion => ResourceLoader.Load<Texture2D>("res://assets/ItemImages/basic-potion-texture-1.png"),
+                ItemType.Potion => ResourceLoader.Load<Texture2D>("res://assets/ItemImages/basic-potion-texture-" + randomNumGen.Next(1,4) + ".png"),
                 _ => ResourceLoader.Load<Texture2D>("res://assets/ItemImages/basic-sword-texture.png"),
             };
 
