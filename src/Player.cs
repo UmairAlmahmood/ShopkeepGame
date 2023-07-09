@@ -37,9 +37,10 @@ public partial class Player : Control {
 		float willingness = 0.0f;
 
 		if((int)GetMeta("Class") == (int)item.GetMeta("ItemType")) {
-			willingness += 0.5f;
-			GD.Print("class/item match (+0.5)");
+			willingness += 0.3f;
+			GD.Print("class/item match (+0.3)");
 		}
+
 
 		if((int)item.GetMeta("ItemType") == (int)ItemType.Potion) {
 			willingness += 0.15f;
@@ -48,31 +49,41 @@ public partial class Player : Control {
 		if((int)item.GetMeta("ItemType") == (int)ItemType.Potion) {
 			willingness += 0.15f;
 		}
+
 
 		if((int)GetMeta("Personality") == (int)Personality.Jolly) {
-			willingness += 0.2f;
-			GD.Print("Jolly (+0.2)");
+			willingness += 0.1f;
+			GD.Print("Jolly (+0.1)");
 			if((int)item.GetMeta("isCursed") != 0) willingness -= 0.3f;
 
 			willingness += (float) (-(Math.Log10((double)(int)(item.GetMeta("Rarity"))))/(int)item.GetMeta("Rarity")+1.0f)/1.5f;
 		}
 		if((int)GetMeta("Personality") == (int)Personality.Cheapskate) {
-			willingness -= 0.3f;
+			willingness -= 0.2f;
 			GD.Print("Cheapskate (-0.3)");			
 			if((int)item.GetMeta("isCursed") != 0) willingness -= 0.3f;
 
 			willingness += (float) -(Math.Log10((double)(int)(item.GetMeta("Rarity"))))/(5*(int)item.GetMeta("Rarity"))+0.2f;
 		}
 		if((int)GetMeta("Personality") == (int)Personality.Foolhardy) {
-			willingness += 0.2f;
-			GD.Print("Foolhardy (+0.2)");
+			willingness += 0.1f;
+			GD.Print("Foolhardy (+0.1)");
 
-			willingness += (float) -(Math.Log10((double)(int)(item.GetMeta("Rarity"))))/5*(int)item.GetMeta("Rarity")+0.2f;
+			willingness += (float) (Math.Pow(Math.E, (double)(int)(item.GetMeta("Rarity")))-1.5f)/2;
 		}
 		if((int)GetMeta("Personality") == (int)Personality.Cowardly) {
 			if((int)item.GetMeta("isCursed") != 0) willingness -= 0.5f;
 
-			willingness += (float) (Math.Pow(Math.E, (double)(int)(item.GetMeta("Rarity")))-1.5f)/2;
+			willingness += (float) -(Math.Log10((double)(int)(item.GetMeta("Rarity"))))/5*(int)item.GetMeta("Rarity")+0.2f;
+		}
+
+		if((int)GetMeta("SpecialTrait") == (int)item.GetMeta("ItemTrait")) {
+			willingness += 0.5f;
+			GD.Print("Special trait match (+0.5)");
+		}
+
+		if((int)item.GetMeta("SpecialTrait") == (int)ItemTrait.Broken) {
+			willingness -= (int)item.GetMeta("Rarity") == (int)Rarity.Legendary ? 0.1f : 0.3f;
 		}
 
 		return willingness + mod;
@@ -87,6 +98,8 @@ public partial class Player : Control {
 		return FirstNames[randint.Next(0, FirstNames.Length)] + " " + LastNames[randint.Next(0, LastNames.Length)];
 	}
 }
+
+
 
 public enum Personality {
 	Jolly = 1, Cheapskate = 2, Foolhardy = 3, Cowardly = 4,

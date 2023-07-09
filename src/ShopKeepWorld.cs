@@ -27,7 +27,7 @@ public partial class ShopKeepWorld : Node2D {
 			Player player = playerScene.Instantiate<Player>();
 			player.SetMeta("Name", Player.generatePlayerName());
 			player.SetMeta("Portrait", genericTexture);
-			player.SetMeta("Personality", randomNumGen.Next(1, 3));
+			player.SetMeta("Personality", randomNumGen.Next(1, 5));
 			player.SetMeta("Class", randomNumGen.Next(1, 4));
 			playersQueue.Enqueue(player);
 		}

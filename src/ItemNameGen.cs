@@ -2,81 +2,79 @@ using System;
 
 
     public class itemNameGen {
+
+
+        public static String[] SwordSegment = {"Blade", "Sword", "Nail", "Tooth"};
+        public static String[] BowSegment = {"Bow", "Longbow", "Shortbow"};
+        public static String[] StaffSegment = {"Staff", "Sceptre", "Rod"};
+        public static String[] ArmourSegment = {"Mail", "Armour", "Plate"};
+        public static String[] PotionSegment = {"Potion", "Brew", "Elixir"};
+
+        public static String[] VsUndeadPrefix = {"Blessed", "Silvered",};
+        public static String[] VsUndeadSuffix = {"of Silver", "of Zombie Slaying"};
+        public static String[] VsUndeadLegendarySwords = {"Grave Warning", "Holy Avenger"};
+        public static String[] VsUndeadLegendaryBows = {"Mortal Reminder"};
+        public static String[] VsUndeadLegendaryStaffs = {"Bone's Bane"};
+        public static String[] VsUndeadLegendaryArmour = {"Grave Guardian's Plate"};
+        public static String[] VsUndeadLegendaryPotions = {"Potion that Makes You Very Good at Killing Goblins"};
+
+
+        public static String[] VsGoblinsPrefix = {"Goblin Slayer's"};
+        public static String[] VsGoblinsSuffix = {"of Goblin Slaying"};
+        public static String[] VsGoblinsLegendarySwords = {"Gobsmacker 3000", "Orcrist", "Glamdring"};
+        public static String[] VsGoblinsLegendaryBows = {"Gobsniper"};
+        public static String[] VsGoblinsLegendaryStaffs = {"Nilbog's Staff"};
+        public static String[] VsGoblinsLegendaryArmour = {"Armour of the Tall"};
+        public static String[] VsGoblinsLegendaryPotions = {"Potion that Makes You Very Good at Killing Goblins"};
+
+        public static String[] DiverPrefix = {"Marine", "Tidal"};
+        public static String[] DiverSuffix = {"of the Sea", "of the Tide"};
+        public static String[] DiverLegendarySwords = {"Shark-Tooth"};
+        public static String[] DiverLegendaryBows = {"Sea-King's Stormbow"};
+        public static String[] DiverLegendaryStaffs = {"Tsunami"};
+        public static String[] DiverLegendaryArmour = {"Shark-Bait's Plate"};
+        public static String[] DiverLegendaryPotions = {"Potion that Makes You Very Good at Killing Goblins"};
+
+
+        public static String[] VsDragonPrefix = {"Dragon-Scale", "Fireproof"};
+        public static String[] VsDragonSuffix = {"of Wyrm-Slaying", "of the Dragon-Slayer"};
+        public static String[] VsDragonLegendarySwords = {"Gurthang"};
+        public static String[] VsDragonLegendaryBows = {"Bard's Bow"};
+        public static String[] VsDragonLegendaryStaffs = {"Wyrm's Bane"};
+        public static String[] VsDragonLegendaryArmour = {"Lava-Wader's Mail"};
+        public static String[] VsDragonLegendaryPotions = {"Potion that Makes You Very Good at Killing Goblins"};
+
+
+        public static String[] BrokenPrefix = {"Defective", "Ancient", "Incomplete", "Coupon for a"};
+        public static String[] BrokenSuffix = {"Voucher", "of the Dragon-Slayer"};
+        public static String[] BrokenLegendarySwords = {"Hero's Sword"};
+        public static String[] BrokenLegendaryBows = {"Odysseus' Unstrung Bow"};
+        public static String[] BrokenLegendaryStaffs = {"Shattered Sceptre of the Fallen Mage-King"};
+        public static String[] BrokenLegendaryArmour = {"Rusted Armour of the Hero"};
+        public static String[] BrokenLegendaryPotions = {"Potion that Makes You Very Good at Killing Goblins"};
+
+
+        public static String[] DungeoneerPrefix = {"Adventurer's", "Shining", "Spelunker's", "Cave-In Proof"};
+        public static String[] DungeoneerSuffix = {"of the Spelunker", "of the Dungeoneer", "of Darkvision"};
+        public static String[] DungeoneerLegendarySwords = {"Master Dungeoneer's Sword"};
+        public static String[] DungeoneerLegendaryBows = {"Master Dungeoneer's Bow"};
+        public static String[] DungeoneerLegendaryStaffs = {"Master Dungeoneer's Staff"};
+        public static String[] DungeoneerLegendaryArmour = {"Master Dungeoneer's Armour"};
+        public static String[] DungeoneerLegendaryPotions = {"Potion that Makes You Very Good at Killing Goblins"};
+
+        public static String[] LegendarySwords = {"Excalibur", "Sting"};
+        public static String[] LegendaryBows = {"Fail-Not"};
+        public static String[] LegendaryStaffs = {"Grey Wizard's Staff"};
+        public static String[] LegendaryArmour = {"Mithril Chain-Mail"};
+        public static String[] LegendaryPotions = {"Ambrosia", "Panacea"};
+
+        public static String[] UncommonPrefix = {"Trusty", "Stalwart", "Journeyman's"};
+        public static String[] UncommonSuffix = {"of the Adventurer"};
+
+        public static String[] CommonPrefix = {"Ordinary", "Legendary", "Squire's", "Steel", "Handy"};
+        public static String[] CommonSuffix = {"of the Amateur Adventurer", ""};
+
         public static String GenerateItemName(int ItemType, int Rarity, int Cursed, int ItemTrait) {
-
-            String[] SwordSegment = {"Blade", "Sword", "Nail", "Tooth"};
-            String[] BowSegment = {"Bow", "Longbow", "Shortbow"};
-            String[] StaffSegment = {"Staff", "Sceptre", "Rod"};
-            String[] ArmourSegment = {"Mail", "Armour", "Plate"};
-            String[] PotionSegment = {"Potion", "Brew", "Elixir"};
-
-            String[] VsUndeadPrefix = {"Blessed", "Silvered",};
-            String[] VsUndeadSuffix = {"of Silver", "of Zombie Slaying"};
-            String[] VsUndeadLegendarySwords = {"Grave Warning", "Holy Avenger"};
-            String[] VsUndeadLegendaryBows = {"Mortal Reminder"};
-            String[] VsUndeadLegendaryStaffs = {"Bone's Bane"};
-            String[] VsUndeadLegendaryArmour = {"Grave Guardian's Plate"};
-            String[] VsUndeadLegendaryPotions = {"Potion that Makes You Very Good at Killing Goblins"};
-
-
-            String[] VsGoblinsPrefix = {"Goblin Slayer's"};
-            String[] VsGoblinsSuffix = {"of Goblin Slaying"};
-            String[] VsGoblinsLegendarySwords = {"Gobsmacker 3000", "Orcrist", "Glamdring"};
-            String[] VsGoblinsLegendaryBows = {"Gobsniper"};
-            String[] VsGoblinsLegendaryStaffs = {"Nilbog's Staff"};
-            String[] VsGoblinsLegendaryArmour = {"Armour of the Tall"};
-            String[] VsGoblinsLegendaryPotions = {"Potion that Makes You Very Good at Killing Goblins"};
-
-            String[] DiverPrefix = {"Marine", "Tidal"};
-            String[] DiverSuffix = {"of the Sea", "of the Tide"};
-            String[] DiverLegendarySwords = {"Shark-Tooth"};
-            String[] DiverLegendaryBows = {"Sea-King's Stormbow"};
-            String[] DiverLegendaryStaffs = {"Tsunami"};
-            String[] DiverLegendaryArmour = {"Shark-Bait's Plate"};
-            String[] DiverLegendaryPotions = {"Potion that Makes You Very Good at Killing Goblins"};
-
-
-            String[] VsDragonPrefix = {"Dragon-Scale", "Fireproof"};
-            String[] VsDragonSuffix = {"of Wyrm-Slaying", "of the Dragon-Slayer"};
-            String[] VsDragonLegendarySwords = {"Gurthang"};
-            String[] VsDragonLegendaryBows = {"Bard's Bow"};
-            String[] VsDragonLegendaryStaffs = {"Wyrm's Bane"};
-            String[] VsDragonLegendaryArmour = {"Lava-Wader's Mail"};
-            String[] VsDragonLegendaryPotions = {"Potion that Makes You Very Good at Killing Goblins"};
-
-
-            String[] BrokenPrefix = {"Defective", "Ancient", "Incomplete", "Coupon for a"};
-            String[] BrokenSuffix = {"Voucher", "of the Dragon-Slayer"};
-            String[] BrokenLegendarySwords = {"Hero's Sword"};
-            String[] BrokenLegendaryBows = {"Odysseus' Unstrung Bow"};
-            String[] BrokenLegendaryStaffs = {"Shattered Sceptre of the Fallen Mage-King"};
-            String[] BrokenLegendaryArmour = {"Rusted Armour of the Hero"};
-            String[] BrokenLegendaryPotions = {"Potion that Makes You Very Good at Killing Goblins"};
-
-
-            String[] DungeoneerPrefix = {"Adventurer's", "Shining", "Spelunker's", "Cave-In Proof"};
-            String[] DungeoneerSuffix = {"of the Spelunker", "of the Dungeoneer", "of Darkvision"};
-            String[] DungeoneerLegendarySwords = {"Master Dungeoneer's Sword"};
-            String[] DungeoneerLegendaryBows = {"Master Dungeoneer's Bow"};
-            String[] DungeoneerLegendaryStaffs = {"Master Dungeoneer's Staff"};
-            String[] DungeoneerLegendaryArmour = {"Master Dungeoneer's Armour"};
-            String[] DungeoneerLegendaryPotions = {"Potion that Makes You Very Good at Killing Goblins"};
-
-            String[] LegendarySwords = {"Excalibur", "Sting"};
-            String[] LegendaryBows = {"Fail-Not"};
-            String[] LegendaryStaffs = {"Grey Wizard's Staff"};
-            String[] LegendaryArmour = {"Mithril Chain-Mail"};
-            String[] LegendaryPotions = {"Ambrosia", "Panacea"};
-
-            String[] UncommonPrefix = {"Trusty", "Stalwart", "Journeyman's"};
-            String[] UncommonSuffix = {"of the Adventurer"};
-
-            String[] CommonPrefix = {"Ordinary", "Legendary", "Squire's", "Steel", "Handy"};
-            String[] CommonSuffix = {"of the Amateur Adventurer", ""};
-
-
-
-
 
             Random randint = new Random();
 
