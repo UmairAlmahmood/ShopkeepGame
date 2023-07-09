@@ -82,7 +82,7 @@ public partial class Player : Control {
 			GD.Print("Special trait match (+0.5)");
 		}
 
-		if((int)item.GetMeta("SpecialTrait") == (int)ItemTrait.Broken) {
+		if((int)item.GetMeta("ItemTrait") == (int)ItemTrait.Broken) {
 			willingness -= (int)item.GetMeta("Rarity") == (int)Rarity.Legendary ? 0.1f : 0.3f;
 		}
 
