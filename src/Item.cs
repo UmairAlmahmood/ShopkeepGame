@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Text.RegularExpressions;
 
 public partial class Item : Control {
 	ItemType type;
@@ -9,7 +10,7 @@ public partial class Item : Control {
 	Texture2D image;
 	TextureRect itemImage;
 	Label itemNameLabel;
-	Label Cost;
+	LineEdit Cost;
 	Label Type;
 	Label Rarity;
 	Label Cursed;
@@ -20,6 +21,7 @@ public partial class Item : Control {
 	public bool isPressable = true;
 	ShaderMaterial defaultMat;
 	ShaderMaterial legendary;
+	String oldText = "";
 	public override void _Ready() {
 		defaultMat = ResourceLoader.Load<ShaderMaterial>("res://assets/shaders/Default.tres");
 		legendary = ResourceLoader.Load<ShaderMaterial>("res://assets/shaders/Legendary.material");
@@ -28,7 +30,8 @@ public partial class Item : Control {
 		CustomMinimumSize = marginContainer.Size;
 		itemImage = GetNode<TextureRect>("MarginContainer/VBoxContainer/TextureRect");
 		itemNameLabel = GetNode<Label>("MarginContainer/VBoxContainer/Label");
-		Cost = GetNode<Label>("MarginContainer/VBoxContainer/Cost");
+		Cost = GetNode<LineEdit>("MarginContainer/VBoxContainer/Cost");
+		Cost.TextChanged += costChanged;
 		Type = GetNode<Label>("MarginContainer/VBoxContainer/HBoxContainer/Type");
 		Rarity = GetNode<Label>("MarginContainer/VBoxContainer/HBoxContainer/Rarity");
 		Cursed = GetNode<Label>("MarginContainer/VBoxContainer/HBoxContainer/Is Cursed");
@@ -41,7 +44,7 @@ public partial class Item : Control {
 		rarity = (Rarity)(int)GetMeta("Rarity");
 		Rarity.Text = rarity.ToString();
 		cost = (float)GetMeta("Cost");
-		Cost.Text = "Cost: $" + cost.ToString();
+		Cost.PlaceholderText = "Estimated Cost: $" + cost.ToString();
 		cursed = (Cursed)(int)GetMeta("isCursed");
 		Cursed.Text = (int)cursed != 0 ? "Cursed" : "";
 
@@ -59,6 +62,16 @@ public partial class Item : Control {
 		MouseEntered += MouseEnteredHandler;
 		MouseExited += mouseExitedHandler;
 	}
+
+    private void costChanged(string newText) {
+		if(Regex.IsMatch(newText, "[^0-9.]")) {
+			Cost.Text = oldText;
+		} else {
+			oldText = newText;
+			float newCost = (float)Double.Parse(newText);
+			cost = newCost;
+		}
+    }
 
     void mouseExitedHandler() {
         border.Hide();

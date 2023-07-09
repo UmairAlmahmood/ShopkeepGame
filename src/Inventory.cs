@@ -11,6 +11,7 @@ public partial class Inventory : Control {
     GridContainer inventoryMenu;
     Control itemPlace;
     Item sellingItem = null;
+    public float EsitmatedTotal = 0.00f;
     public override void _Ready() {
         itemPlace = GetNode<Control>("../ItemPlace");
 		Random randomNumGen = new Random();
@@ -54,6 +55,7 @@ public partial class Inventory : Control {
                 _ => 50,
             };
             item.SetMeta("Cost", (float)Math.Round(((randomNumGen.NextDouble()*10 + baseLinePrice)*Math.Pow(rarity, 3)), 2));
+            EsitmatedTotal += (float)item.GetMeta("Cost");
             item.SetMeta("Image", itemTexture);
             item.SetMeta("isCursed", cursed);
 

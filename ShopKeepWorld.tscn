@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://d4jftqjnd6ael" path="res://assets/ShopArt/background-evening.png" id="2_07h10"]
 [ext_resource type="Script" path="res://src/Inventory.cs" id="2_jvvst"]
 [ext_resource type="PackedScene" uid="uid://cs0hw43iaprtg" path="res://scenes/DialogueBox.tscn" id="3_ouxon"]
-[ext_resource type="Theme" uid="uid://8wbamidobt85" path="res://Main.tres" id="4_1uo8q"]
+[ext_resource type="Theme" path="res://Main.tres" id="4_1uo8q"]
 [ext_resource type="Texture2D" uid="uid://cju1l6srjua2" path="res://assets/ShopArt/Inventory-button.png" id="4_3rtjg"]
 [ext_resource type="Texture2D" uid="uid://cgqrwmtiykjon" path="res://assets/ShopArt/Shop-lvl-1.png" id="4_4pylg"]
 [ext_resource type="Script" path="res://src/InvTextureButton.cs" id="6_81yfo"]
@@ -153,6 +153,7 @@ mouse_filter = 2
 
 [node name="Inventory" type="Control" parent="CanvasLayer"]
 visible = false
+z_index = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
