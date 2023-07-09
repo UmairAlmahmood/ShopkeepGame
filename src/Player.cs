@@ -32,7 +32,7 @@ public partial class Player : Control {
 	public override void _Process(double delta) {
 	}
 
-	public float CalculatePurchaseWillingess(Item item) {
+	public float CalculatePurchaseWillingess(Item item, float mod) {
 
 		float willingness = 0.0f;
 
@@ -75,7 +75,7 @@ public partial class Player : Control {
 			willingness += (float) (Math.Pow(Math.E, (double)(int)(item.GetMeta("Rarity")))-1.5f)/2;
 		}
 
-		return willingness;
+		return willingness + mod;
 	}
 
 	public static String generatePlayerName() {
