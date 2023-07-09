@@ -86,9 +86,9 @@ mouse_filter = 2
 
 [node name="DialogueBox" parent="CanvasLayer" instance=ExtResource("3_ouxon")]
 offset_left = 544.0
-offset_top = 767.0
-offset_right = 544.0
-offset_bottom = 767.0
+offset_top = 719.0
+offset_right = 1398.0
+offset_bottom = 995.0
 
 [node name="PlayerPos" type="Control" parent="CanvasLayer"]
 layout_mode = 3
