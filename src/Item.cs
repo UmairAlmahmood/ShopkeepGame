@@ -18,7 +18,11 @@ public partial class Item : Control {
 	bool isMouseInside = false;
 	public Cursed cursed = (Cursed)0;
 	public bool isPressable = true;
+	ShaderMaterial defaultMat;
+	ShaderMaterial legendary;
 	public override void _Ready() {
+		defaultMat = ResourceLoader.Load<ShaderMaterial>("res://assets/shaders/Default.tres");
+		legendary = ResourceLoader.Load<ShaderMaterial>("res://assets/shaders/Legendary.material");
 		marginContainer = GetNode<MarginContainer>("MarginContainer");
 		Size = marginContainer.Size;
 		CustomMinimumSize = marginContainer.Size;
@@ -45,6 +49,12 @@ public partial class Item : Control {
 		itemNameLabel.Text = name;
 		image = (Texture2D)GetMeta("Image");
 		itemImage.Texture = image;
+		
+		if(rarity == global::Rarity.Legendary) {
+			itemImage.Material = legendary;
+		} else {
+			itemImage.Material = defaultMat;
+		}
 		
 		MouseEntered += () => {
 			if(isPressable) {
