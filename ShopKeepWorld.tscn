@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://da21yxsvrkju3"]
+[gd_scene load_steps=11 format=3 uid="uid://da21yxsvrkju3"]
 
 [ext_resource type="Script" path="res://src/ShopKeepWorld.cs" id="1_u08rc"]
 [ext_resource type="Script" path="res://src/UISwitcher.cs" id="1_wubux"]
@@ -9,6 +9,14 @@
 [ext_resource type="Texture2D" uid="uid://cgqrwmtiykjon" path="res://assets/ShopArt/Shop-lvl-1.png" id="4_4pylg"]
 [ext_resource type="Script" path="res://src/InvTextureButton.cs" id="6_81yfo"]
 [ext_resource type="Texture2D" uid="uid://dyskuftbnef0p" path="res://assets/ShopArt/Inventory-button-open.png" id="6_ds2e6"]
+
+[sub_resource type="Environment" id="Environment_pkoxl"]
+background_mode = 3
+tonemap_mode = 3
+glow_enabled = true
+glow_intensity = 1.0
+glow_strength = 1.5
+glow_hdr_threshold = 1.05
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_u08rc")
@@ -140,3 +148,46 @@ offset_left = 164.0
 offset_top = 700.0
 offset_right = 318.0
 offset_bottom = 820.0
+
+[node name="Inventory" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("2_jvvst")
+numItems = 20
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Inventory"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 80
+theme_override_constants/margin_top = 120
+theme_override_constants/margin_right = 80
+theme_override_constants/margin_bottom = 100
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Inventory/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+color = Color(0.231373, 0.231373, 0.231373, 0.321569)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/Inventory/MarginContainer"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/Inventory/MarginContainer/ScrollContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 40
+columns = 9
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="CanvasLayer"]
+environment = SubResource("Environment_pkoxl")

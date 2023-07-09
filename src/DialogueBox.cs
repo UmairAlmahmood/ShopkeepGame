@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 
 public partial class DialogueBox : Control {
-    public Queue<String> dialogue = new Queue<string>();
+    public Queue<String> dialogue = new Queue<String>();
     Label text;
     public override void _Ready() {
         text = GetNode<Label>("TextureRect/MarginContainer/Text");

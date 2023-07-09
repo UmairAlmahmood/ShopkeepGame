@@ -35,9 +35,12 @@ public partial class ShopKeepWorld : Node2D {
 		playerPos.AddChild(currentPlayer);
 		Tween tween = GetTree().CreateTween();
 		tween.TweenProperty(dialogueBox, "modulate", originalColor, 1.5f);
-		dialogueBox.dialogue.Enqueue(currentPlayer.name + ": " + Dialogue.greetings[randomNumGen.Next(0, Dialogue.greetings.Count)]);
+		dialogueBox.dialogue.Enqueue(currentPlayer.name + ": " + Dialogue.getGreeting(currentPlayer.personality));
 	}
 
 	public override void _Process(double delta) {
+		if(Input.IsActionJustReleased("MouseClicked")) {
+
+		}
 	}
 }

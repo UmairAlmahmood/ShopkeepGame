@@ -15,7 +15,8 @@ public partial class Inventory : Control {
         itemPlace = GetNode<Control>("../ItemPlace");
 		Random randomNumGen = new Random();
         itemScene = ResourceLoader.Load<PackedScene>("res://scenes/Item.tscn");
-        inventoryMenu = GetNode<GridContainer>("MarginContainer/GridContainer");
+        itemTexture = ResourceLoader.Load<Texture2D>("res://assets/ItemImages/basic-sword-texture.png");
+        inventoryMenu = GetNode<GridContainer>("MarginContainer/ScrollContainer/GridContainer");
         for(int i = 0; i<numItems; i++) {
 
             Item item = itemScene.Instantiate<Item>();
