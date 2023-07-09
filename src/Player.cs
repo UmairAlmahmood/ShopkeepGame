@@ -22,6 +22,8 @@ public partial class Player : Control {
 
 		portraitImage = (Texture2D)GetMeta("Portrait");
 		portraitRect.Texture = portraitImage;
+		SetAnchorsPreset(LayoutPreset.Center);
+
 		name = (String)GetMeta("Name");
 		nameLabel.Text = name;
 		playerClass = (PlayerClass)(int)GetMeta("Class");

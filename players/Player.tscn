@@ -1,12 +1,22 @@
-[gd_scene load_steps=2 format=3 uid="uid://ckods6hqnwgc1"]
+[gd_scene load_steps=3 format=3 uid="uid://ckods6hqnwgc1"]
 
 [ext_resource type="Script" path="res://src/Player.cs" id="1_ivlfs"]
+[ext_resource type="Texture2D" uid="uid://d02ihf50r6p6q" path="res://assets/Player Art/archer-texture.png" id="2_an0hv"]
 
 [node name="Player" type="Control"]
+custom_minimum_size = Vector2(298, 518)
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -149.0
+offset_top = -286.0
+offset_right = 149.0
+offset_bottom = 288.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_ivlfs")
 metadata/Name = ""
 metadata/Personality = 0
@@ -20,6 +30,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+z_index = 5
 layout_mode = 2
 
 [node name="Class" type="Label" parent="VBoxContainer/HBoxContainer"]
@@ -30,3 +41,6 @@ layout_mode = 2
 
 [node name="Portrait" type="TextureRect" parent="VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_an0hv")

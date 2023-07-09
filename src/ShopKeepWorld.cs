@@ -39,10 +39,17 @@ public partial class ShopKeepWorld : Node2D {
 		for(int i = 0; i<numberOfPlayers; i++) {
 			Player player = playerScene.Instantiate<Player>();
 			player.SetMeta("Name", Player.generatePlayerName());
-			player.SetMeta("Portrait", genericTexture);
 			player.SetMeta("Personality", randomNumGen.Next(1, 5));
-			player.SetMeta("Class", randomNumGen.Next(1, 4));
+			PlayerClass playerClass = (PlayerClass)randomNumGen.Next(1, 4);
+			player.SetMeta("Class", (int)playerClass);
 			player.SetMeta("SpecialTrait", randomNumGen.Next(1, 6));
+			genericTexture = playerClass switch {
+				PlayerClass.Warrior => ResourceLoader.Load<Texture2D>("res://assets/Player Art/warrior-texture.png"),
+				PlayerClass.Archer => ResourceLoader.Load<Texture2D>("res://assets/Player Art/archer-texture.png"),
+				PlayerClass.Mage => ResourceLoader.Load<Texture2D>("res://assets/Player Art/mage-texture.png"),
+				_ => ResourceLoader.Load<Texture2D>("res://assets/ItemImages/GenericJellyItem.png"),
+			};
+			player.SetMeta("Portrait", genericTexture);
 			player.SetMeta("Budget", randomNumGen.NextDouble()*10000);
 			playersQueue.Enqueue(player);
 		}
