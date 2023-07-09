@@ -20,6 +20,7 @@ metadata/Cost = 0.0
 metadata/Name = ""
 metadata/Image = Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
 metadata/isCursed = 0
+metadata/ItemTrait = 0
 
 [node name="Border" type="NinePatchRect" parent="."]
 layout_mode = 0

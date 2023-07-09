@@ -16,7 +16,7 @@ public partial class Inventory : Control {
 		Random randomNumGen = new Random();
         itemScene = ResourceLoader.Load<PackedScene>("res://scenes/Item.tscn");
         itemTexture = ResourceLoader.Load<Texture2D>("res://assets/ItemImages/basic-sword-texture.png");
-        inventoryMenu = GetNode<GridContainer>("MarginContainer/ScrollContainer/GridContainer");
+        inventoryMenu = GetNode<GridContainer>("/root/World/CanvasLayer/Inventory/MarginContainer/ScrollContainer/GridContainer");
         for(int i = 0; i<numItems; i++) {
 
             Item item = itemScene.Instantiate<Item>();
@@ -41,6 +41,7 @@ public partial class Inventory : Control {
             item.SetMeta("Rarity", rarity);
             int cursed = (randomNumGen.NextDouble() < 0.9 ? (int)Cursed.None : randomNumGen.Next(1, 5));
             int trait = rarity>1 ? (randomNumGen.NextDouble() < 0.5 ? (int)ItemTrait.None : randomNumGen.Next(1, 6)) : (int)ItemTrait.None;
+            item.SetMeta("ItemTrait", trait);
 
             int baseLinePrice = itemType switch {
                 ItemType.Sword => 50,
