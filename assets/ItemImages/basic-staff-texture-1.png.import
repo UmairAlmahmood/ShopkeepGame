@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://depb8ldkg1ny4"
-path="res://.godot/imported/basic-armour-texture.png-cd00324ad8d78ae3a842cf380558d70d.ctex"
+uid="uid://dbx70plcn755n"
+path="res://.godot/imported/basic-staff-texture-1.png-414937e77606fff23218d0d4eb4dce39.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ShopArt/basic-armour-texture.png"
-dest_files=["res://.godot/imported/basic-armour-texture.png-cd00324ad8d78ae3a842cf380558d70d.ctex"]
+source_file="res://assets/ItemImages/basic-staff-texture-1.png"
+dest_files=["res://.godot/imported/basic-staff-texture-1.png-414937e77606fff23218d0d4eb4dce39.ctex"]
 
 [params]
 

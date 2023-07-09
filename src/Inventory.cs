@@ -28,6 +28,8 @@ public partial class Inventory : Control {
                 ItemType.Sword => ResourceLoader.Load<Texture2D>("res://assets/ItemImages/basic-sword-texture.png"),
                 ItemType.Bow => ResourceLoader.Load<Texture2D>("res://assets/ItemImages/basic-bow-texture.png"),
                 ItemType.Potion => ResourceLoader.Load<Texture2D>("res://assets/ItemImages/basic-potion-texture-" + randomNumGen.Next(1,4) + ".png"),
+                ItemType.Armour => ResourceLoader.Load<Texture2D>("res://assets/ItemImages/basic-armour-texture.png"),
+                ItemType.Staff => ResourceLoader.Load<Texture2D>("res://assets/ItemImages/basic-staff-texture-" + randomNumGen.Next(1,3) + ".png"),
                 _ => ResourceLoader.Load<Texture2D>("res://assets/ItemImages/basic-sword-texture.png"),
             };
 
