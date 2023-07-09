@@ -24,6 +24,7 @@ public static class Dialogue {
         [new PlayerTypes(Personality.Cowardly, SpecialTrait.VsUndead)] = "I was wandering in the dark spooky forest *shudder* and I found a hoard of zombies out in the forest… but I got scared and ran off. I’m sure if I had just the right weapon to boost my confidence, I could slay them.",
         [new PlayerTypes(Personality.Cowardly, SpecialTrait.Diver)] = "I was out diving when I found a creepy shrine on the sea floor. I heard something swimming around down there so I swam up to the surface as fast as I could. I too curious not to go back. Do you have anything I could use to defend myself?",
         [new PlayerTypes(Personality.Cowardly, SpecialTrait.VsDragon)] = "Hello there, shopkeep. Uh, it’s me… the famous dragon slayer. I was wondering if you had anything I could use to slay the dragon… and not be slain myself… *wipes sweat from forehead",
+        [new PlayerTypes(Personality.Cowardly, SpecialTrait.Dungeoneer)] = "“I was hired to lead a team into an old castle. I’ve heard nobody has ever gone in and returned… *gulp* Do you have anything that might prove useful to me?”",
     };
     
     public static String getGreeting(Personality playerPersonality, SpecialTrait specialTrait) {
