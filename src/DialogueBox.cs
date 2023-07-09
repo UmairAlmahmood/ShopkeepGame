@@ -32,6 +32,7 @@ public partial class DialogueBox : Control {
     }
 
     public void Reset() {
+        dialogue.Clear();
         text.Text = "";
     }
 }

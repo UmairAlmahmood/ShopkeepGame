@@ -64,6 +64,11 @@ public partial class Inventory : Control {
             inventoryMenu.AddChild(item);
             item.ClickedOnItem += ItemClickedOn;
         }
+        Hidden += () => {
+            foreach(Item item in itemsList) {
+                item.isMouseInside = false;
+            }
+        };
         base._Ready();
     }
     
@@ -79,17 +84,19 @@ public partial class Inventory : Control {
             EmitSignal(SignalName.ItemSent, item);
 
         } else {
-            itemsList.Remove(item);
-            inventoryMenu.RemoveChild(item);
-            item.isPressable = false;
-            item.Position = Vector2.Zero;
-            item.border.Hide();
-            itemPlace.AddChild(item);
-            
             itemsList.Add(sellingItem);
             sellingItem.Reparent(inventoryMenu);
             sellingItem.isPressable = true;
             sellingItem = item;
+            sellingItem.isMouseInside = false;
+
+            itemsList.Remove(item);
+            inventoryMenu.RemoveChild(item);
+            item.isPressable = false;
+            item.Position = Vector2.Zero;
+            item.isMouseInside = false;
+            item.border.Hide();
+            itemPlace.AddChild(item);
             EmitSignal(SignalName.ItemSent, item);
             
         }

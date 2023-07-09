@@ -15,7 +15,7 @@ public partial class Item : Control {
 	Label Cursed;
 	MarginContainer marginContainer;
 	public NinePatchRect border;
-	bool isMouseInside = false;
+	public bool isMouseInside = false;
 	public Cursed cursed = (Cursed)0;
 	public bool isPressable = true;
 	ShaderMaterial defaultMat;
@@ -56,18 +56,23 @@ public partial class Item : Control {
 			itemImage.Material = defaultMat;
 		}
 		
-		MouseEntered += () => {
-			if(isPressable) {
-                border.Show();
-                isMouseInside = true;
-			} else {
-				isMouseInside = false;
-			}
-		};
-		MouseExited += () => {
-			border.Hide();
+		MouseEntered += MouseEnteredHandler;
+		MouseExited += mouseExitedHandler;
+	}
+
+    void mouseExitedHandler() {
+        border.Hide();
+        isMouseInside = false;
+
+    }
+	
+	void MouseEnteredHandler() {
+		if(isPressable) {
+			border.Show();
+			isMouseInside = true;
+		} else {
 			isMouseInside = false;
-		};
+		}
 	}
 	 
 	public void setSize() {
@@ -78,6 +83,7 @@ public partial class Item : Control {
 
 	public override void _Process(double delta) {
 		if(Input.IsActionJustReleased("MouseClicked") && isMouseInside && isPressable) {
+			GD.Print("AAAAAAAAAAAHHHHHHHHHHHHHHhh", this.name);
 			EmitSignal(SignalName.ClickedOnItem, this);
 		}
 	}

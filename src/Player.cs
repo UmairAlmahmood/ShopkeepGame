@@ -40,14 +40,12 @@ public partial class Player : Control {
 	}
 
 	public float CalculatePurchaseWillingess(Item item, float mod) {
-
 		float willingness = 0.0f;
 
 		if((int)GetMeta("Class") == (int)item.GetMeta("ItemType")) {
 			willingness += 0.3f;
 			GD.Print("class/item match (+0.3)");
 		}
-
 
 		if((int)item.GetMeta("ItemType") == (int)ItemType.Potion) {
 			willingness += 0.1f;
@@ -66,12 +64,14 @@ public partial class Player : Control {
 			if((int)item.GetMeta("isCursed") != 0) willingness -= 0.3f;
 
 			willingness += (float) -(Math.Log10((double)(int)(item.GetMeta("Rarity"))))/(5*(int)item.GetMeta("Rarity"))+0.2f;
+			GD.Print("THis is a value to pay attention to ", -(Math.Log10((double)(int)(item.GetMeta("Rarity"))))/(5*(int)item.GetMeta("Rarity"))+0.2);
 		}
 		if((int)GetMeta("Personality") == (int)Personality.Foolhardy) {
 			willingness += 0.1f;
 			GD.Print("Foolhardy (+0.1)");
 
-			willingness += (float) (Math.Pow(Math.E, (double)(int)(item.GetMeta("Rarity")))-1.5f)/2;
+			willingness += (float) (Math.Pow(Math.E, (double)(int)(item.GetMeta("Rarity"))*.25)-1.5f)/2;
+			GD.Print("THis is a value to pay attention to ", (Math.Pow(Math.E, (double)(int)(item.GetMeta("Rarity"))*.25)-1.5f)/2);
 		}
 		if((int)GetMeta("Personality") == (int)Personality.Cowardly) {
 			if((int)item.GetMeta("isCursed") != 0) willingness -= 0.5f;
