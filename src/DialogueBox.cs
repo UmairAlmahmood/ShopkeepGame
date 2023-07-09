@@ -28,5 +28,6 @@ public partial class DialogueBox : Control {
         if(dialogue.Count == 0) return;
         String nextDialogue = dialogue.Dequeue();
         text.Text += nextDialogue;
+        scrollContainer.ScrollVertical = (int)(scrollContainer.GetVScrollBar().MaxValue - 20);
     }
 }

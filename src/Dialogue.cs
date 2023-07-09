@@ -23,8 +23,23 @@ public static class Dialogue {
             return "AAA";
         }
     }
-    public static String getDialogue() {
-        return "AA";
+    public static String getDialogueFromWillingess(float willingness) {
+        string response = "";
+        if(willingness < .1) {
+            response = "Is this a joke?";
+        } if(willingness < .3) {
+            response = "I'm not impressed";
+        } else if(willingness < .5) {
+            response = "I see the value but it isn't for me";
+        } else if(willingness < .7) {
+            response = "I am intriguied by the item, tell me more";
+        } else if(willingness < .95) {
+            response = "I do like this item very much, it does seem useful to me";
+        } else if (willingness < 1.0) {
+            response = "Let it already be sold";
+        }
+        GD.Print(willingness);
+        return response;
     }
 }
 

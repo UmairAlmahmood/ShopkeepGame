@@ -68,7 +68,9 @@ public partial class ShopKeepWorld : Node2D {
 	}
 
     private void itemSentHandler(Item item) {
-
+		float willingness = currentPlayer.CalculatePurchaseWillingess(item, 0);
+		dialogueBox.dialogue.Enqueue("\n\n" + currentPlayer.name + ": " + Dialogue.getDialogueFromWillingess(willingness));
+		dialogueBox.setText();
     }
 
     private async void reactionHandler(string text) {
@@ -76,7 +78,7 @@ public partial class ShopKeepWorld : Node2D {
 		dialogueBox.setText();
 		timer.Start(.5);
 		await ToSignal(timer, "timeout");
-		dialogueBox.dialogue.Enqueue("\n\n" + currentPlayer.name + ": " +Dialogue.getDialogue());
+		dialogueBox.dialogue.Enqueue("\n\n" + currentPlayer.name + ": " + "We'll lets see what you have in store");
 		dialogueBox.setText();
     }
 

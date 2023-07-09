@@ -10,7 +10,7 @@ public partial class Inventory : Control {
     Texture2D itemTexture;
     GridContainer inventoryMenu;
     Control itemPlace;
-    bool isSellingItem = false;
+    Item sellingItem = null;
     public override void _Ready() {
         itemPlace = GetNode<Control>("../ItemPlace");
 		Random randomNumGen = new Random();
@@ -66,13 +66,31 @@ public partial class Inventory : Control {
     }
     
     void ItemClickedOn(Item item) {
-        itemsList.Remove(item);
-        inventoryMenu.RemoveChild(item);
-        item.isPressable = false;
-        item.Position = Vector2.Zero;
-        item.border.Hide();
-        itemPlace.AddChild(item);
-        EmitSignal(SignalName.ItemSent, item);
+        if(sellingItem is null) {
+            itemsList.Remove(item);
+            inventoryMenu.RemoveChild(item);
+            item.isPressable = false;
+            item.Position = Vector2.Zero;
+            item.border.Hide();
+            itemPlace.AddChild(item);
+            sellingItem = item;
+            EmitSignal(SignalName.ItemSent, item);
+
+        } else {
+            itemsList.Remove(item);
+            inventoryMenu.RemoveChild(item);
+            item.isPressable = false;
+            item.Position = Vector2.Zero;
+            item.border.Hide();
+            itemPlace.AddChild(item);
+            
+            itemsList.Add(sellingItem);
+            sellingItem.Reparent(inventoryMenu);
+            sellingItem.isPressable = true;
+            sellingItem = item;
+            EmitSignal(SignalName.ItemSent, item);
+            
+        }
     }
 
     [Signal]
