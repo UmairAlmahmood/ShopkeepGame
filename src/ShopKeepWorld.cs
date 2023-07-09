@@ -55,8 +55,13 @@ public partial class ShopKeepWorld : Node2D {
 		}
 		currentPlayer = playersQueue.Dequeue();
 		playerPos.AddChild(currentPlayer);
+		Vector2 newPos = currentPlayer.Position;
+		Vector2 startPos = currentPlayer.Position;
+		startPos.X = -GetViewportRect().Size.X;
+		currentPlayer.Position = startPos;
 		Tween tween = GetTree().CreateTween();
-		tween.TweenProperty(dialogueBox, "modulate", originalColor, 1.0f);
+		tween.TweenProperty(currentPlayer, "position", newPos, 1.0);
+		tween.TweenProperty(dialogueBox, "modulate", originalColor, 1.0);
 		dialogueBox.dialogue.Enqueue(currentPlayer.name + ": " + Dialogue.getGreeting(currentPlayer.personality, currentPlayer.playerClass, currentPlayer.specialTrait));
 
 		tween.Finished += () => {
@@ -106,7 +111,7 @@ public partial class ShopKeepWorld : Node2D {
     }
 	
 	public enum ReactionType {
-		ShowItem, SellItem, Continue,
+		ShowItem, SellItem, Continue, ChangePrice,
 	}
 
     private async void reactionHandler(string text, ReactionType reactionType) {
@@ -118,13 +123,51 @@ public partial class ShopKeepWorld : Node2D {
             dialogueBox.dialogue.Enqueue("\n\n" + currentPlayer.name + ": " + "Well let's see what you have in store");
             dialogueBox.setText();
 		} else if(reactionType == ReactionType.SellItem) {
-			(bool buys, String message) = currentPlayer.buy(currentWillingness, currentItem.cost);
+			(BuyEnum buys, String message) = currentPlayer.buy(currentWillingness, currentItem.cost);
             dialogueBox.dialogue.Enqueue("\n\n" + currentPlayer.name + ": " + message);
             dialogueBox.setText();
-			if(buys) {
+			if(buys == BuyEnum.WillBuy) {
 				moneyEarned += inventory.ItemSold();
 				cyclePlayer();
+			} else if (buys == BuyEnum.TooExpensive) {
+				dialoguePicker.SetOptions( new List<(string, Action)> {
+					("I can lower the price", () => {
+						EmitSignal(SignalName.SentReaction, "I can lower the price", (int)ReactionType.ChangePrice);
+						dialoguePicker.Hide();
+					}),
+					("I see another item that you may be interested in", () => {
+						EmitSignal(SignalName.SentReaction, "I see another item that you may be interested in", (int)ReactionType.ShowItem);
+						dialoguePicker.Hide();
+					}),
+				});
+				
 			} else {
+				
+			}
+		} else if(reactionType == ReactionType.ChangePrice) {
+            dialogueBox.dialogue.Enqueue("\n\n" + currentPlayer.name + ": " + "Very well change the price");
+            dialogueBox.setText();
+			await ToSignal(inventory, "PriceChangedAgain");
+
+			(BuyEnum buys, String message) = currentPlayer.buy(currentWillingness, currentItem.cost);
+			if(buys == BuyEnum.WillBuy) {
+                dialogueBox.dialogue.Enqueue("\n\n" + currentPlayer.name + ": " + message);
+                dialogueBox.setText();
+				moneyEarned += inventory.ItemSold();
+				cyclePlayer();
+			} else if(buys == BuyEnum.TooExpensive) {
+                dialogueBox.dialogue.Enqueue("\n\n" + currentPlayer.name + ": " + "My friend it is still too expensive");
+                dialogueBox.setText();
+				dialoguePicker.SetOptions( new List<(string, Action)> {
+					("I can lower the price further", () => {
+						EmitSignal(SignalName.SentReaction, "I can lower the price further", (int)ReactionType.ChangePrice);
+						dialoguePicker.Hide();
+					}),
+					("I see another item that you may be interested in", () => {
+						EmitSignal(SignalName.SentReaction, "I see another item that you may be interested in", (int)ReactionType.ShowItem);
+						dialoguePicker.Hide();
+					}),
+				});
 				
 			} 
 		}
@@ -135,12 +178,18 @@ public partial class ShopKeepWorld : Node2D {
         tween.SetTrans(Tween.TransitionType.Sine);
         Vector2 newPos = currentPlayer.Position;
         newPos.X = GetViewportRect().Size.X;
-        tween.TweenProperty(currentPlayer, "position", newPos, 0.4f);
+        tween.TweenProperty(currentPlayer, "position", newPos, 1.0f);
         await ToSignal(tween, "finished");
         currentPlayer.QueueFree();
 
 		currentPlayer = playersQueue.Dequeue();
 		playerPos.AddChild(currentPlayer);
+		Vector2 originalPos = currentPlayer.Position;
+		Vector2 startPos = currentPlayer.Position;
+		startPos.X = -GetViewportRect().Size.X;
+		currentPlayer.Position = startPos;
+		Tween tween1 = GetTree().CreateTween();
+		tween1.TweenProperty(currentPlayer, "position", originalPos, 1.0);
 		dialogueBox.Reset();
 		dialogueBox.dialogue.Enqueue(currentPlayer.name + ": " + Dialogue.getGreeting(currentPlayer.personality, currentPlayer.playerClass, currentPlayer.specialTrait));
         dialogueBox.setText();

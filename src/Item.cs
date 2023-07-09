@@ -22,6 +22,7 @@ public partial class Item : Control {
 	ShaderMaterial defaultMat;
 	ShaderMaterial legendary;
 	String oldText = "";
+	bool isTyping = false;
 	public override void _Ready() {
 		defaultMat = ResourceLoader.Load<ShaderMaterial>("res://assets/shaders/Default.tres");
 		legendary = ResourceLoader.Load<ShaderMaterial>("res://assets/shaders/Legendary.material");
@@ -61,6 +62,12 @@ public partial class Item : Control {
 		
 		MouseEntered += MouseEnteredHandler;
 		MouseExited += mouseExitedHandler;
+		
+		Cost.FocusEntered += () => isTyping = true;
+		Cost.FocusExited += () => {
+            EmitSignal(SignalName.PriceChanged, cost);
+            isTyping = false;
+		};
 	}
 
     private void costChanged(string newText) {
@@ -96,13 +103,16 @@ public partial class Item : Control {
 
 	public override void _Process(double delta) {
 		if(Input.IsActionJustReleased("MouseClicked") && isMouseInside && isPressable) {
-			GD.Print("AAAAAAAAAAAHHHHHHHHHHHHHHhh", this.name);
 			EmitSignal(SignalName.ClickedOnItem, this);
+		} else if(Input.IsActionJustReleased("Enter") && isTyping) {
+			EmitSignal(SignalName.PriceChanged, cost);
 		}
 	}
 
 	[Signal]
 	public delegate void ClickedOnItemEventHandler(Item item);
+	[Signal]
+	public delegate void PriceChangedEventHandler(float newCost);
 }
 
 //Enums For Items

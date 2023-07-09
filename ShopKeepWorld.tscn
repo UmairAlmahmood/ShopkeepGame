@@ -250,5 +250,5 @@ wait_time = 0.1
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("19_0f882")
-volume_db = 0.063
+volume_db = -15.0
 autoplay = true

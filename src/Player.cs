@@ -102,15 +102,15 @@ public partial class Player : Control {
 		return false;
 	}
 	
-	public (bool, String) buy(float willingness, float price) {
+	public (BuyEnum, String) buy(float willingness, float price) {
 		Random random = new Random();
 		double buyPercentage = random.NextDouble();
 		if(buyPercentage > (1.0-willingness) && price <= budget) {
-			return (true, "This seems perfect, I will take it off your hands\n\n");
+			return (BuyEnum.WillBuy, "This seems perfect, I will take it off your hands\n\n");
 		} else if(buyPercentage < willingness && price > budget) {
-			return (false, "I would buy if it fell within my price range");
+			return (BuyEnum.TooExpensive, "I would buy if it fell within my price range");
 		} else {
-			return (false, "I don't see that I need it specifically");
+			return (BuyEnum.WillNotBuy, "I don't see that I need it specifically");
 		}
 	}
 	
@@ -138,3 +138,6 @@ public enum SpecialTrait {
 	VsUndead = 1, VsGoblins = 2, Dungeoneer = 3, Diver = 4, VsDragon = 5, CurseHunter = 6,
 }
 
+public enum BuyEnum {
+	WillBuy, TooExpensive, WillNotBuy
+}

@@ -65,6 +65,7 @@ public partial class Inventory : Control {
             item.setSize();
             inventoryMenu.AddChild(item);
             item.ClickedOnItem += ItemClickedOn;
+            item.PriceChanged += (newCost) => EmitSignal(SignalName.PriceChangedAgain, newCost);
         }
         Hidden += () => {
             foreach(Item item in itemsList) {
@@ -102,6 +103,7 @@ public partial class Inventory : Control {
             EmitSignal(SignalName.ItemSent, item);
             
         }
+        Hide();
     }
     public float ItemSold() {
         if(sellingItem is not null)
@@ -121,4 +123,7 @@ public partial class Inventory : Control {
 
     [Signal]
     public delegate void ItemSentEventHandler(Item item);
+    
+    [Signal]
+    public delegate void PriceChangedAgainEventHandler(float newCost);
 }
