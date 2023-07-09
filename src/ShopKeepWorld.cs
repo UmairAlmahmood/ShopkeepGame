@@ -73,7 +73,7 @@ public partial class ShopKeepWorld : Node2D {
 		dialogueBox.setText();
 		bool quit = currentPlayer.modifyQuitPercentage(willingness);
 		if(quit) {
-			dialogueBox.dialogue.Enqueue("\n" + currentPlayer.name + ": It seems you haven't gotten what I want, so I will carry on my search");
+			dialogueBox.dialogue.Enqueue("\n" + currentPlayer.name + ": It seems you haven't got what I want, so I will carry on my search");
 		}
     }
 
@@ -82,7 +82,7 @@ public partial class ShopKeepWorld : Node2D {
 		dialogueBox.setText();
 		timer.Start(.5);
 		await ToSignal(timer, "timeout");
-		dialogueBox.dialogue.Enqueue("\n\n" + currentPlayer.name + ": " + "We'll lets see what you have in store");
+		dialogueBox.dialogue.Enqueue("\n\n" + currentPlayer.name + ": " + "Well lets see what you have in store");
 		dialogueBox.setText();
     }
 
