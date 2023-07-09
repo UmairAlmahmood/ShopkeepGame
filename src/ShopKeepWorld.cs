@@ -7,12 +7,17 @@ public partial class ShopKeepWorld : Node2D {
 	[Export]
 	int numberOfPlayers = 5;
 	PackedScene playerScene;
+	DialoguePicker dialoguePicker;
 	Texture2D genericTexture;
 	Control playerPos;
 	DialogueBox dialogueBox;
 	Player currentPlayer;
     Random randomNumGen;
 	public override void _Ready() {
+		dialoguePicker = GetNode<DialoguePicker>("CanvasLayer/DialoguePicker");
+		dialoguePicker.Hide();
+		SentReaction += reactionHandler;
+
 		dialogueBox = GetNode<DialogueBox>("CanvasLayer/DialogueBox");
 		Color originalColor = dialogueBox.Modulate;
 		Color newColor = originalColor;
@@ -36,12 +41,36 @@ public partial class ShopKeepWorld : Node2D {
 		playerPos.AddChild(currentPlayer);
 		Tween tween = GetTree().CreateTween();
 		tween.TweenProperty(dialogueBox, "modulate", originalColor, 1.5f);
-		dialogueBox.dialogue.Enqueue(currentPlayer.name + ": " + Dialogue.getGreeting(currentPlayer.personality));
+		dialogueBox.dialogue.Enqueue(currentPlayer.name + ": " + Dialogue.getGreeting());
+
+		tween.Finished += () => {
+			dialogueBox.setText();
+            dialoguePicker.SetOptions(new List<(string, Action)>{
+            ("I see", () => {
+                EmitSignal(SignalName.SentReaction, "I see");
+                dialoguePicker.Hide();
+            }),
+            ("Hello", () => {
+                EmitSignal(SignalName.SentReaction, "Hello");
+                dialoguePicker.Hide();
+            }),
+            ("I might have what you are looking for", () => {
+                EmitSignal(SignalName.SentReaction, "I might have what you are looking for");
+                dialoguePicker.Hide();
+            })
+			});
+		};
 	}
 
-	public override void _Process(double delta) {
-		if(Input.IsActionJustReleased("MouseClicked")) {
+    private void reactionHandler(string text) {
+		dialogueBox.dialogue.Enqueue("\n\nMe: " + text);
+		dialogueBox.setText();
+    }
 
-		}
+    public override void _Process(double delta) {
+
 	}
+
+	[Signal]
+	public delegate void SentReactionEventHandler(String text);
 }
