@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://d4jftqjnd6ael" path="res://assets/ShopArt/background-evening.png" id="2_07h10"]
 [ext_resource type="Script" path="res://src/Inventory.cs" id="2_jvvst"]
 [ext_resource type="PackedScene" uid="uid://cs0hw43iaprtg" path="res://scenes/DialogueBox.tscn" id="3_ouxon"]
-[ext_resource type="Theme" uid="uid://8wbamidobt85" path="res://Main.tres" id="4_1uo8q"]
+[ext_resource type="Theme" path="res://Main.tres" id="4_1uo8q"]
 [ext_resource type="Texture2D" uid="uid://cju1l6srjua2" path="res://assets/ShopArt/Inventory-button.png" id="4_3rtjg"]
 [ext_resource type="Texture2D" uid="uid://cgqrwmtiykjon" path="res://assets/ShopArt/Shop-lvl-1.png" id="4_4pylg"]
 [ext_resource type="Script" path="res://src/InvTextureButton.cs" id="6_81yfo"]
@@ -210,49 +210,14 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("14_tfjrw")
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Info"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 502.0
-offset_top = -2.0
-offset_right = -596.0
-offset_bottom = -18.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme_override_constants/margin_left = 80
-theme_override_constants/margin_top = 120
-theme_override_constants/margin_right = 80
-theme_override_constants/margin_bottom = 100
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Info/MarginContainer"]
-layout_mode = 2
-texture = ExtResource("15_ioepf")
-
-[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/Info/MarginContainer"]
-layout_mode = 2
-horizontal_scroll_mode = 0
-
-[node name="GridContainer" type="GridContainer" parent="CanvasLayer/Info/MarginContainer/ScrollContainer"]
-layout_mode = 2
-mouse_filter = 2
-theme_override_constants/h_separation = 20
-theme_override_constants/v_separation = 40
-columns = 7
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="CanvasLayer"]
-environment = SubResource("Environment_pkoxl")
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Info"]
 offset_left = 611.0
 offset_top = 192.0
 offset_right = 1273.0
 offset_bottom = 992.0
 texture = ExtResource("15_ioepf")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/TextureRect"]
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Info/TextureRect"]
 layout_mode = 0
 offset_left = 114.0
 offset_top = 40.0
@@ -269,6 +234,9 @@ But at the same time... remember that this is a business! And like any business,
 
 Good Luck!
 The Shopkeepers' Guild"
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="CanvasLayer"]
+environment = SubResource("Environment_pkoxl")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.1
