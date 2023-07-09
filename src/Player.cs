@@ -89,7 +89,7 @@ public partial class Player : Control {
 		}
 
 		if((float)item.GetMeta("Cost") <= (float)GetMeta("Budget")) {
-			willingness *= 1/ ((float)item.GetMeta("Cost") / (float)GetMeta("Budget"));
+			willingness *= 1 - (((float)item.GetMeta("Cost") / (float)GetMeta("Budget")));
 		}
 
 		return willingness + mod;
