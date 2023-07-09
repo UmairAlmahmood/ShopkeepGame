@@ -13,6 +13,6 @@ void fragment() {
 	* step(textureColor.g, 0.6) * step(0.3, textureColor.g) 
 	* step(textureColor.b, 0.7) * step(0.4, textureColor.b);
 
-	COLOR = mix(textureColor, vec4(vec3(normalizedNoise), textureColor.a), (.6*sin(TIME)-0.45)*isMetal);
+	COLOR = mix(textureColor, vec4(vec3(normalizedNoise), textureColor.a), (.6*sin(TIME)-0.45));
 
 }
