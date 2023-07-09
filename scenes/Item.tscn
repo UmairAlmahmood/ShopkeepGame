@@ -23,8 +23,8 @@ metadata/isCursed = 0
 
 [node name="Border" type="NinePatchRect" parent="."]
 layout_mode = 0
-offset_right = 203.0
-offset_bottom = 205.0
+offset_right = 237.0
+offset_bottom = 52.0
 texture = ExtResource("3_bxffq")
 patch_margin_left = 10
 patch_margin_top = 10
@@ -33,10 +33,10 @@ patch_margin_bottom = 10
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 0
-offset_left = 4.0
+offset_left = -14.0
 offset_top = 1.0
-offset_right = 201.0
-offset_bottom = 310.0
+offset_right = 235.0
+offset_bottom = 345.0
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
@@ -44,6 +44,7 @@ theme_override_constants/margin_bottom = 20
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
+alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2

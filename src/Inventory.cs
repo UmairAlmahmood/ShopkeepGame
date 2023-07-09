@@ -15,13 +15,20 @@ public partial class Inventory : Control {
         itemPlace = GetNode<Control>("../ItemPlace");
 		Random randomNumGen = new Random();
         itemScene = ResourceLoader.Load<PackedScene>("res://scenes/Item.tscn");
-        itemTexture = ResourceLoader.Load<Texture2D>("res://assets/ItemImages/basic-sword-texture.png");
         inventoryMenu = GetNode<GridContainer>("MarginContainer/GridContainer");
         for(int i = 0; i<numItems; i++) {
 
             Item item = itemScene.Instantiate<Item>();
             ItemType itemType = (ItemType)(int)randomNumGen.Next(1, 6);
             item.SetMeta("ItemType", (int)itemType);
+
+
+            itemTexture = itemType switch {
+                ItemType.Sword => ResourceLoader.Load<Texture2D>("res://assets/ItemImages/basic-sword-texture.png"),
+                ItemType.Bow => ResourceLoader.Load<Texture2D>("res://assets/ItemImages/basic-bow-texture.png"),
+                ItemType.Potion => ResourceLoader.Load<Texture2D>("res://assets/ItemImages/basic-potion-texture-1.png"),
+                _ => ResourceLoader.Load<Texture2D>("res://assets/ItemImages/basic-sword-texture.png"),
+            };
 
             int rarity = randomNumGen.Next(1, 21);
             if(rarity <= 10) rarity = 1;
@@ -136,7 +143,7 @@ public partial class Inventory : Control {
         String[] UncommonPrefix = {"Trusty", "Stalwart", "Journeyman's"};
         String[] UncommonSuffix = {"of the Adventurer"};
 
-        String[] CommonPrefix = {"Ordinary", "Legendary", "Squire's", "Steel"};
+        String[] CommonPrefix = {"Ordinary", "Legendary", "Squire's", "Steel", "Handy"};
         String[] CommonSuffix = {"of the Amateur Adventurer", ""};
 
 
