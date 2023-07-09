@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://da21yxsvrkju3"]
+[gd_scene load_steps=13 format=3 uid="uid://da21yxsvrkju3"]
 
 [ext_resource type="Script" path="res://src/ShopKeepWorld.cs" id="1_u08rc"]
 [ext_resource type="Script" path="res://src/UISwitcher.cs" id="1_wubux"]
@@ -10,9 +10,7 @@
 [ext_resource type="Script" path="res://src/InvTextureButton.cs" id="6_81yfo"]
 [ext_resource type="Texture2D" uid="uid://dyskuftbnef0p" path="res://assets/ShopArt/Inventory-button-open.png" id="6_ds2e6"]
 [ext_resource type="Texture2D" uid="uid://bfwfoyke7idcy" path="res://assets/ShopArt/Settings-button.png" id="8_kqyim"]
-[ext_resource type="Script" path="res://src/SettingsButton.cs" id="9_jv1ba"]
-[ext_resource type="Texture2D" uid="uid://c56xf2rcvhjai" path="res://assets/ShopArt/info-button.png" id="10_6octk"]
-[ext_resource type="Script" path="res://src/InfoButton.cs" id="11_h84p4"]
+[ext_resource type="PackedScene" uid="uid://dherius22xbo0" path="res://scenes/DialoguePicker.tscn" id="10_bllrw"]
 
 [sub_resource type="Environment" id="Environment_pkoxl"]
 background_mode = 3
@@ -139,6 +137,9 @@ offset_left = 164.0
 offset_top = 700.0
 offset_right = 318.0
 offset_bottom = 820.0
+
+[node name="DialoguePicker" parent="CanvasLayer" instance=ExtResource("10_bllrw")]
+visible = false
 
 [node name="Inventory" type="Control" parent="CanvasLayer"]
 visible = false
