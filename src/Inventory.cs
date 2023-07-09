@@ -72,6 +72,9 @@ public partial class Inventory : Control {
         item.Position = Vector2.Zero;
         item.border.Hide();
         itemPlace.AddChild(item);
+        EmitSignal(SignalName.ItemSent, item);
     }
 
+    [Signal]
+    public delegate void ItemSentEventHandler(Item item);
 }

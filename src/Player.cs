@@ -9,6 +9,7 @@ public partial class Player : Control {
 	public Personality personality;
 	public PlayerClass playerClass;
 	public Label classLabel;
+	public SpecialTrait specialTrait;
 	Label nameLabel;
 	TextureRect portraitRect;
 	public override void _Ready() {
@@ -25,6 +26,7 @@ public partial class Player : Control {
 		classLabel.Text = playerClass.ToString();
 
 		personality = (Personality)(int)GetMeta("Personality");
+		specialTrait = (SpecialTrait)(int)GetMeta("SpecialTrait");
 
 		GD.Print(GetMeta("Name") + "'s willingness is to buy " + Inventory.itemsList[0].GetMeta("Name") + ": " + CalculatePurchaseWillingess(Inventory.itemsList[0], 0));
 	}

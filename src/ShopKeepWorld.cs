@@ -13,7 +13,12 @@ public partial class ShopKeepWorld : Node2D {
 	DialogueBox dialogueBox;
 	Player currentPlayer;
     Random randomNumGen;
+	Timer timer;
+	Inventory inventory;
 	public override void _Ready() {
+		inventory = GetNode<Inventory>("CanvasLayer/Inventory");
+		inventory.ItemSent += itemSentHandler;
+		timer = GetNode<Timer>("/root/World/Timer");
 		dialoguePicker = GetNode<DialoguePicker>("CanvasLayer/DialoguePicker");
 		dialoguePicker.Hide();
 		SentReaction += reactionHandler;
@@ -40,8 +45,8 @@ public partial class ShopKeepWorld : Node2D {
 		currentPlayer = playersQueue.Dequeue();
 		playerPos.AddChild(currentPlayer);
 		Tween tween = GetTree().CreateTween();
-		tween.TweenProperty(dialogueBox, "modulate", originalColor, 1.5f);
-		dialogueBox.dialogue.Enqueue(currentPlayer.name + ": " + Dialogue.getGreeting());
+		tween.TweenProperty(dialogueBox, "modulate", originalColor, 1.0f);
+		dialogueBox.dialogue.Enqueue(currentPlayer.name + ": " + Dialogue.getGreeting(currentPlayer.personality, currentPlayer.playerClass, currentPlayer.specialTrait));
 
 		tween.Finished += () => {
 			dialogueBox.setText();
@@ -62,8 +67,16 @@ public partial class ShopKeepWorld : Node2D {
 		};
 	}
 
-    private void reactionHandler(string text) {
+    private void itemSentHandler(Item item) {
+
+    }
+
+    private async void reactionHandler(string text) {
 		dialogueBox.dialogue.Enqueue("\n\nMe: " + text);
+		dialogueBox.setText();
+		timer.Start(.5);
+		await ToSignal(timer, "timeout");
+		dialogueBox.dialogue.Enqueue("\n\n" + currentPlayer.name + ": " +Dialogue.getDialogue());
 		dialogueBox.setText();
     }
 
