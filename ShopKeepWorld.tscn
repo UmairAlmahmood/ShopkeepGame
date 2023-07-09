@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://da21yxsvrkju3"]
+[gd_scene load_steps=12 format=3 uid="uid://da21yxsvrkju3"]
 
 [ext_resource type="Script" path="res://src/ShopKeepWorld.cs" id="1_u08rc"]
 [ext_resource type="Script" path="res://src/UISwitcher.cs" id="1_wubux"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cgqrwmtiykjon" path="res://assets/ShopArt/Shop-lvl-1.png" id="4_4pylg"]
 [ext_resource type="Script" path="res://src/InvTextureButton.cs" id="6_81yfo"]
 [ext_resource type="Texture2D" uid="uid://dyskuftbnef0p" path="res://assets/ShopArt/Inventory-button-open.png" id="6_ds2e6"]
+[ext_resource type="Texture2D" uid="uid://bfwfoyke7idcy" path="res://assets/ShopArt/Settings-button.png" id="8_kqyim"]
 
 [sub_resource type="Environment" id="Environment_pkoxl"]
 background_mode = 3
@@ -75,6 +76,17 @@ texture_normal = ExtResource("4_3rtjg")
 texture_hover = ExtResource("6_ds2e6")
 script = ExtResource("6_81yfo")
 
+[node name="SettingsButtonWrapper" type="HBoxContainer" parent="CanvasLayer/UISwitcher"]
+layout_mode = 0
+offset_left = 289.0
+offset_top = 929.0
+offset_right = 506.0
+offset_bottom = 1057.0
+
+[node name="SettingsButton" type="TextureButton" parent="CanvasLayer/UISwitcher/SettingsButtonWrapper"]
+layout_mode = 2
+texture_normal = ExtResource("8_kqyim")
+
 [node name="CustomerView" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchors_preset = 15
@@ -88,7 +100,7 @@ mouse_filter = 2
 offset_left = 544.0
 offset_top = 719.0
 offset_right = 1398.0
-offset_bottom = 995.0
+offset_bottom = 981.0
 
 [node name="PlayerPos" type="Control" parent="CanvasLayer"]
 layout_mode = 3
@@ -113,6 +125,7 @@ offset_right = 318.0
 offset_bottom = 820.0
 
 [node name="Inventory" type="Control" parent="CanvasLayer"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
