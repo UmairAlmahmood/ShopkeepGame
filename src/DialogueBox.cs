@@ -12,7 +12,7 @@ public partial class DialogueBox : Control {
         scrollContainer = GetNode<ScrollContainer>("TextureRect/MarginContainer/ScrollContainer");
         vbox = GetNode<VBoxContainer>("TextureRect/MarginContainer/ScrollContainer/VBoxContainer");
         vbox.MinimumSizeChanged += () => {
-            scrollContainer.ScrollVertical = (int)(scrollContainer.GetVScrollBar().MaxValue - 20);
+            scrollContainer.ScrollVertical = (int)(scrollContainer.GetVScrollBar().MaxValue);
         };
         base._Ready();
     }

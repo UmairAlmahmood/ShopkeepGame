@@ -37,6 +37,8 @@ public static class Dialogue {
             response = "I do like this item very much, it does seem useful to me";
         } else if (willingness < 1.0) {
             response = "Let it already be sold";
+        } else {
+            response = "...\nI will literally die for this";
         }
         GD.Print(willingness);
         return response;

@@ -71,6 +71,10 @@ public partial class ShopKeepWorld : Node2D {
 		float willingness = currentPlayer.CalculatePurchaseWillingess(item, 0);
 		dialogueBox.dialogue.Enqueue("\n\n" + currentPlayer.name + ": " + Dialogue.getDialogueFromWillingess(willingness));
 		dialogueBox.setText();
+		bool quit = currentPlayer.modifyQuitPercentage(willingness);
+		if(quit) {
+			dialogueBox.dialogue.Enqueue("\n" + currentPlayer.name + ": It seems you haven't gotten what I want, so I will carry on my search");
+		}
     }
 
     private async void reactionHandler(string text) {

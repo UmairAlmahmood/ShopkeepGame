@@ -12,6 +12,7 @@ public partial class Player : Control {
 	public SpecialTrait specialTrait;
 	Label nameLabel;
 	TextureRect portraitRect;
+	float quitPercentage = 0.0f;
 	public override void _Ready() {
 		classLabel = GetNode<Label>("VBoxContainer/HBoxContainer/Class");
 		nameLabel = GetNode<Label>("VBoxContainer/HBoxContainer/Name");
@@ -89,6 +90,17 @@ public partial class Player : Control {
 		}
 
 		return willingness + mod;
+	}
+
+	public bool modifyQuitPercentage(float willingness) {
+		Random random = new Random();
+		float invWillingness = (0.55f - willingness)/1.6f;
+		quitPercentage += invWillingness;
+		double percantageRoll = random.NextDouble();
+		if(percantageRoll < invWillingness) {
+			return true;
+		}
+		return false;
 	}
 
 	public static String generatePlayerName() {
