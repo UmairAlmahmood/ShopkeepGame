@@ -10,6 +10,20 @@ public static class Dialogue {
         [new PlayerTypes(Personality.Jolly, SpecialTrait.Dungeoneer)] = "Hello there! I’ve come to this peaceful town to recuperate after delving into several dungeons. I thought I’d see if you carried any gear I could use in the field.",
         [new PlayerTypes(Personality.Jolly, SpecialTrait.Diver)] = "Salutations, friend! It’s good to be back on land for a change! Alas, I’ll be back to fighting those damn mer-raiders soon enough, as per the King’s orders. Say, any chance you’ve got something I might find of use?",
         [new PlayerTypes(Personality.Jolly, SpecialTrait.CurseHunter)] = "Greetings honest shopkeep! I’ve heard rumors that you carry cursed items. Do you have any in stock?",
+        [new PlayerTypes(Personality.Cheapskate, SpecialTrait.VsUndead)] = "Hey shopkeep. I’m looking for gear but the last shopkeep I went to tried to sell me a rusty old sword for $50. I don’t want to see any funny business.",
+        [new PlayerTypes(Personality.Cheapskate, SpecialTrait.VsGoblins)] = "Hey shopkeep. I’m looking for gear but the last shopkeep I went to tried to sell me a rusty old sword for $50. I don’t want to see any funny business.",
+        [new PlayerTypes(Personality.Cheapskate, SpecialTrait.Dungeoneer)] = "Hey shopkeep. I’m looking for gear but the last shopkeep I went to tried to sell me a rusty old sword for $50. I don’t want to see any funny business.",
+        [new PlayerTypes(Personality.Cheapskate, SpecialTrait.Diver)] = "Hey shopkeep. I’m looking for gear but the last shopkeep I went to tried to sell me a rusty old sword for $50. I don’t want to see any funny business.",
+        [new PlayerTypes(Personality.Cheapskate, SpecialTrait.VsDragon)] = "Hey shopkeep. I’m looking for gear but the last shopkeep I went to tried to sell me a rusty old sword for $50. I don’t want to see any funny business.",
+        [new PlayerTypes(Personality.Foolhardy, SpecialTrait.VsUndead)] = "I found a whole goblin tribe in the forest. I think I can handle it myself if I just find the right weapon. What’ve you got, shopkeep?",
+        [new PlayerTypes(Personality.Foolhardy, SpecialTrait.VsGoblins)] = "I found a whole goblin tribe in the forest. I think I can handle it myself if I just find the right weapon. What’ve you got, shopkeep?",
+        [new PlayerTypes(Personality.Foolhardy, SpecialTrait.Dungeoneer)] = "I found the entrance to an ancient temple. It’s littered with traps and danger I think I can handle it myself if I just find the right gear. What’ve you got, shopkeep?",
+        [new PlayerTypes(Personality.Foolhardy, SpecialTrait.VsDragon)] = "I found the lair of a dragon up in the mountains. I think I can handle it myself if I can just find the right weapon. What’ve you got shopkeep?",
+        [new PlayerTypes(Personality.Foolhardy, SpecialTrait.Dungeoneer)] = "I found a whole goblin tribe in the forest. I think I can handle it myself if I just find the right weapon. What’ve you got, shopkeep?",
+        [new PlayerTypes(Personality.Foolhardy, SpecialTrait.Diver)] = "I found an underwater city that spans miles. I plan to comb through the ruins myself but I need a weapon. What’ve you got shopkeep?",
+        [new PlayerTypes(Personality.Cowardly, SpecialTrait.VsUndead)] = "I was wandering in the dark spooky forest *shudder* and I found a hoard of zombies out in the forest… but I got scared and ran off. I’m sure if I had just the right weapon to boost my confidence, I could slay them.",
+        [new PlayerTypes(Personality.Cowardly, SpecialTrait.Diver)] = "I was out diving when I found a creepy shrine on the sea floor. I heard something swimming around down there so I swam up to the surface as fast as I could. I too curious not to go back. Do you have anything I could use to defend myself?",
+        [new PlayerTypes(Personality.Cowardly, SpecialTrait.VsDragon)] = "Hello there, shopkeep. Uh, it’s me… the famous dragon slayer. I was wondering if you had anything I could use to slay the dragon… and not be slain myself… *wipes sweat from forehead",
     };
     
     public static String getGreeting(Personality playerPersonality, SpecialTrait specialTrait) {
@@ -18,7 +32,7 @@ public static class Dialogue {
             String playerGreetings = greetingsDict[dialogeType];
             return playerGreetings;
         } catch {
-            return "AAA";
+            return "Greetings shopkeep. What’ve you got for me today?";
         }
     }
     public static String getDialogueFromWillingess(float willingness) {
