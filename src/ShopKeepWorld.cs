@@ -158,6 +158,7 @@ public partial class ShopKeepWorld : Node2D {
             })
 		});
 		inventory.returnItemsToInv();
+		dialogueBox.Reset();
 	}
 
     public override void _Process(double delta) {
