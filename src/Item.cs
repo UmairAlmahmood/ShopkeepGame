@@ -39,7 +39,6 @@ public partial class Item : Control {
 		cost = (float)GetMeta("Cost");
 		Cost.Text = "Cost: $" + cost.ToString();
 		cursed = (Cursed)(int)GetMeta("isCursed");
-		GD.Print(cursed.ToString());
 		Cursed.Text = (int)cursed != 0 ? "Cursed" : "";
 
 		name = (String)GetMeta("Name");

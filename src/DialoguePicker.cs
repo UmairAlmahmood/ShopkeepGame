@@ -14,7 +14,6 @@ public partial class DialoguePicker : Control {
     }
 
     public void SetOptions(List<(String, Action)> options) {
-        GD.Print(options[0], " ", options[1]);
         this.options.Clear();
         this.buttons.Clear();
         foreach(Node buttonOption in vbox.GetChildren())  {
@@ -22,7 +21,6 @@ public partial class DialoguePicker : Control {
         }
         this.options = options;
         foreach((String option, Action callback) in options) {
-            GD.Print("A");
             Button buttonOption = button.Instantiate<Button>();
             buttons.Add(buttonOption);
             buttonOption.Text = option;

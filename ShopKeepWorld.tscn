@@ -240,3 +240,6 @@ columns = 7
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="CanvasLayer"]
 environment = SubResource("Environment_pkoxl")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
